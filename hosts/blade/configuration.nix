@@ -18,6 +18,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Kernel setup
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home".options = ["compress=zstd"];
