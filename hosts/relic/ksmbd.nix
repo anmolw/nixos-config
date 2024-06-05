@@ -29,7 +29,7 @@
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [ 445 ];
+  networking.firewall.allowedTCPPorts = [445];
   systemd.packages = with pkgs; [ksmbd-tools];
   systemd.services.ksmbd.wantedBy = ["multi-user.target"];
 }

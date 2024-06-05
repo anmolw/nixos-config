@@ -14,6 +14,7 @@
     ./nfs.nix
     ./network.nix
     ./ksmbd.nix
+    ./podman.nix
   ];
 
   # Nix settings
