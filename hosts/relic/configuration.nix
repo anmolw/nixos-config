@@ -105,12 +105,6 @@
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.openFirewall = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [8096 445 2049];
-  # networking.firewall.allowedUDPPorts = [8096];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
