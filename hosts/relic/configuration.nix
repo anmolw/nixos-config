@@ -1,0 +1,135 @@
+# Edit this configuration file to define what should be installed on
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./disko-configuration.nix
+    ./nfs.nix
+    ./network.nix
+    ./ksmbd.nix
+  ];
+
+  # Nix settings
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["anmol"];
+  nixpkgs.config.allowUnfree = true;
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Kernel setup
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Media disk
+  fileSystems = {
+    "/srv/media" = {
+      device = "/dev/disk/by-uuid/7460472b-a42e-4804-975b-ace6fd36a01f";
+      fsType = "ext4";
+    };
+  };
+
+  services.tailscale.enable = true;
+  services.tailscale.extraUpFlags = ["--stateful-filtering=false"];
+
+  # Set your time zone.
+  time.timeZone = "Asia/Kolkata";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  # console = {
+  #   font = "Lat2-Terminus16";
+  #   keyMap = "us";
+  #   useXkbConfig = true; # use xkb.options in tty.
+  # };
+
+  # Intel specific video drivers and video acceleration
+  # services.xserver.videoDrivers = ["modesetting"];
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.anmol = {
+    isNormalUser = true;
+    home = "/home/anmol";
+    uid = 1000;
+    createHome = true;
+    shell = pkgs.zsh;
+    extraGroups = ["wheel" "docker" "media"]; # Enable sudo and docker usage
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"];
+  };
+
+  # No initial root password for the purpose of setting up the system
+  users.users.root.initialHashedPassword = "";
+
+  users.groups.media.gid = 1002;
+
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    btop
+    zoxide
+    aria2
+    micro
+    croc
+    eza
+    tealdeer
+    fzf
+    curl
+    pyenv
+    file
+    nfs-utils
+  ];
+
+  programs.zsh.enable = true;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.openFirewall = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [8096 445 2049];
+  # networking.firewall.allowedUDPPorts = [8096];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # Copy the NixOS configuration file and link it from the resulting system
+  # (/run/current-system/configuration.nix). This is useful in case you
+  # accidentally delete configuration.nix.
+  # system.copySystemConfiguration = true;
+
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "24.05"; # Did you read the comment?
+}
