@@ -25,18 +25,17 @@
     dnsovertls = "true";
   };
 
+  # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     8096 # jellyfin
   ];
 
   networking.firewall.allowedUDPPorts = [
-    1900 # jellyfin
-    7359 # jellyfin
+    # jellyfin
+    1900
+    7359
   ];
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [8096 445 2049];
-  # networking.firewall.allowedUDPPorts = [8096];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 }
