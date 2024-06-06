@@ -10,9 +10,13 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./gfx.nix
   ];
 
+  # Nix settings
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["anmol"];
+  nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -20,18 +24,6 @@
 
   # Kernel setup
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  fileSystems = {
-    "/".options = ["compress=zstd"];
-    "/home".options = ["compress=zstd"];
-    "/var".options = ["compress=zstd"];
-    "/srv".options = ["compress=zstd"];
-    "/tmp".options = ["compress=zstd" "noatime"];
-    "/nix".options = ["compress=zstd" "noatime"];
-    "/swap".options = ["noatime"];
-  };
-
-  swapDevices = [{device = "/swap/swapfile";}];
 
   networking.hostName = "blade"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -86,22 +78,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Intel specific video drivers and video acceleration
-  services.xserver.videoDrivers = ["modesetting"];
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
-  };
-
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-    ];
-  };
-  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Force intel-media-driver
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anmol = {
     isNormalUser = true;
@@ -121,18 +97,15 @@
     ];
   };
 
-  nix.settings.trusted-users = ["anmol"];
-
   # Enable flatpak
   services.flatpak.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
     zoxide
+    aria2
     micro
     croc
     eza
@@ -145,6 +118,11 @@
   programs.dconf.enable = true;
 
   programs.zsh.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/anmol/Code/nixos-config";
+  };
 
   programs.firefox = {
     enable = true;
@@ -166,6 +144,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.openFirewall = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

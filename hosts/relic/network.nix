@@ -29,7 +29,7 @@
     8096 # jellyfin
   ];
 
-  networking.firewall.allowedUDPPorts = [ 
+  networking.firewall.allowedUDPPorts = [
     1900 # jellyfin
     7359 # jellyfin
   ];
@@ -39,5 +39,4 @@
   # networking.firewall.allowedUDPPorts = [8096];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
 }

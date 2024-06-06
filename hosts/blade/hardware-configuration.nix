@@ -20,37 +20,37 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@root"];
+    options = ["subvol=@root" "compress=zstd"];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@home"];
+    options = ["subvol=@home" "compress=zstd"];
   };
 
   fileSystems."/var" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@var"];
+    options = ["subvol=@var" "compress=zstd" "noatime"];
   };
 
   fileSystems."/srv" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@srv"];
+    options = ["subvol=@srv" "compress=zstd"];
   };
 
   fileSystems."/tmp" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@tmp"];
+    options = ["subvol=@tmp" "compress=zstd" "noatime"];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@nix"];
+    options = ["subvol=@nix" "compress=zstd" "noatime"];
   };
 
   fileSystems."/boot" = {
@@ -62,10 +62,10 @@
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/d02b5194-de03-413c-addd-6d24f4713778";
     fsType = "btrfs";
-    options = ["subvol=@swap"];
+    options = ["subvol=@swap" "noatime"];
   };
 
-  swapDevices = [];
+  swapDevices = [{device = "/swap/swapfile";}];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
