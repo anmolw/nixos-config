@@ -65,27 +65,31 @@
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"];
   };
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.anmol = import ../../home/general.nix;
+
   # No initial root password for the purpose of setting up the system
   users.users.root.initialHashedPassword = "";
 
   users.groups.media.gid = 1002;
 
   environment.systemPackages = with pkgs; [
+    aria2
+    btop
+    croc
+    curl
+    eza
+    file
+    fzf
+    git
+    micro
+    nfs-utils
+    pyenv
+    tealdeer
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    git
-    btop
     zoxide
-    aria2
-    micro
-    croc
-    eza
-    tealdeer
-    fzf
-    curl
-    pyenv
-    file
-    nfs-utils
   ];
 
   programs.zsh.enable = true;

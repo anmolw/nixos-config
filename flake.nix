@@ -7,11 +7,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -22,16 +21,16 @@
     nixosConfigurations.blade = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
+        inputs.home-manager.nixosModules.default
         ./hosts/blade/configuration.nix
-        # inputs.home-manager.nixosModules.default
       ];
     };
     nixosConfigurations.relic = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         inputs.disko.nixosModules.disko
+        inputs.home-manager.nixosModules.default
         ./hosts/relic/configuration.nix
-        # inputs.home-manager.nixosModules.default
       ];
     };
   };

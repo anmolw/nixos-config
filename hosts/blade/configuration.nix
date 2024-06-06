@@ -97,22 +97,28 @@
     ];
   };
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.anmol = import [
+    ../../home/general.nix
+  ];
+
   # Enable flatpak
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
+    aria2
+    croc
+    curl
+    eza
+    fzf
+    git
+    micro
+    pyenv
+    tealdeer
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    git
     zoxide
-    aria2
-    micro
-    croc
-    eza
-    tealdeer
-    fzf
-    curl
-    pyenv
   ];
 
   programs.dconf.enable = true;

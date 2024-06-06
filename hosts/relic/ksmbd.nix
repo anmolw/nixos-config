@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-  # ksmbd
   environment.systemPackages = with pkgs; [ksmbd-tools];
 
   environment.etc."ksmbd/ksmbd.conf" = {
