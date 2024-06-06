@@ -61,6 +61,7 @@
     uid = 1000;
     createHome = true;
     shell = pkgs.zsh;
+    linger = true;
     extraGroups = ["wheel" "docker" "media"]; # Enable sudo and docker usage
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"];
   };
@@ -86,13 +87,12 @@
     micro
     nfs-utils
     pyenv
-    tealdeer
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    zoxide
   ];
 
   programs.zsh.enable = true;
+  environment.pathsToLink = ["/share/zsh"];
 
   programs.nh = {
     enable = true;

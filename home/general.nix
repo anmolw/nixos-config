@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    tealdeer
     fzf
   ];
 
@@ -10,8 +9,26 @@
     syntaxHighlighting.enable = true;
   };
 
+  programs.atuin = {
+    enable = true;
+  };
+
   programs.bat.enable = true;
   programs.zoxide.enable = true;
+
+  programs.tealdeer = {
+    enable = true;
+    settings.updates = {
+      auto_update = true;
+    };
+  };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    prefix = "C-a";
+    mouse = true;
+  };
 
   programs.eza = {
     enable = true;
@@ -21,11 +38,6 @@
       "-l"
       "--group-directories-first"
     ];
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
   };
 
   # This value determines the Home Manager release that your
