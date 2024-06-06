@@ -101,6 +101,8 @@
   home-manager.useUserPackages = true;
   home-manager.users.anmol = import [
     ../../home/general.nix
+    ../../home/ssh.nix
+    ../../home/vscode.nix
   ];
 
   # Enable flatpak
@@ -114,16 +116,14 @@
     fzf
     git
     micro
-    pyenv
-    tealdeer
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    zoxide
   ];
 
   programs.dconf.enable = true;
 
   programs.zsh.enable = true;
+  environment.pathsToLink = ["/share/zsh"];
 
   programs.nh = {
     enable = true;
