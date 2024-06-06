@@ -11,4 +11,6 @@
     podman-compose
     podman-tui
   ];
+
+  systemd.services.podman-restart.wantedBy = ["multi-user.target"];
 }
