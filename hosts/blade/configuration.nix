@@ -99,7 +99,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.anmol = import [
+  home-manager.users.anmol.imports = [
     ../../home/general.nix
     ../../home/ssh.nix
     ../../home/vscode.nix
@@ -107,6 +107,8 @@
 
   # Enable flatpak
   services.flatpak.enable = true;
+
+  services.tailscale.enable = true;
 
   environment.systemPackages = with pkgs; [
     aria2
