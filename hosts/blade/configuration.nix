@@ -23,6 +23,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel setup
+  boot.kernelParams = [
+    "nvme_core.default_ps_max_latency_us=0"
+  ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "blade"; # Define your hostname.
@@ -118,6 +121,9 @@
     fzf
     git
     micro
+    nvme-cli
+    pciutils
+    usbutils
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
   ];
@@ -149,6 +155,8 @@
   # };
 
   # List services that you want to enable:
+
+  services.fwupd.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
