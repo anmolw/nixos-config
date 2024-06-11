@@ -11,6 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -27,6 +31,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.anmol.imports = [
+            inputs.nix-index-database.hmModules.nix-index
             ./home/general.nix
             ./home/ssh.nix
             ./home/vscode.nix
@@ -46,7 +51,6 @@
           home-manager.useUserPackages = true;
           home-manager.users.anmol.imports = [
             ./home/general.nix
-            ./home/podman.nix
             ./home/nixos-specific.nix
           ];
         }

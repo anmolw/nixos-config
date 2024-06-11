@@ -113,6 +113,7 @@
     croc
     curl
     eza
+    file
     fzf
     git
     micro
