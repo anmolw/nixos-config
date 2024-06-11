@@ -66,11 +66,7 @@
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"];
   };
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.anmol = import ../../home/general.nix;
-
-  # No initial root password for the purpose of setting up the system
+  # No initial root password for the purpose of setting up the system unattended
   users.users.root.initialHashedPassword = "";
 
   users.groups.media.gid = 1002;

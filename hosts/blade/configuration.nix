@@ -78,6 +78,9 @@
     jack.enable = true;
   };
 
+  # Enable power profiles
+  services.power-profiles-daemon.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -99,14 +102,6 @@
       btop
     ];
   };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.anmol.imports = [
-    ../../home/general.nix
-    ../../home/ssh.nix
-    ../../home/vscode.nix
-  ];
 
   # Enable flatpak
   services.flatpak.enable = true;

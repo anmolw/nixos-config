@@ -23,6 +23,16 @@
       modules = [
         inputs.home-manager.nixosModules.default
         ./hosts/blade/configuration.nix
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.anmol.imports = [
+            ./home/general.nix
+            ./home/ssh.nix
+            ./home/vscode.nix
+            ./home/nixos-specific.nix
+          ];
+        }
       ];
     };
     nixosConfigurations.relic = nixpkgs.lib.nixosSystem {
@@ -31,6 +41,15 @@
         inputs.disko.nixosModules.disko
         inputs.home-manager.nixosModules.default
         ./hosts/relic/configuration.nix
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.anmol.imports = [
+            ./home/general.nix
+            ./home/podman.nix
+            ./home/nixos-specific.nix
+          ];
+        }
       ];
     };
   };
