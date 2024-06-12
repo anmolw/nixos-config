@@ -26,7 +26,7 @@
   boot.kernelParams = [
     "nvme_core.default_ps_max_latency_us=0"
   ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   networking.hostName = "blade"; # Define your hostname.
   # Pick only one of the below networking options.
