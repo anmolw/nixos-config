@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +28,7 @@
       modules = [
         inputs.home-manager.nixosModules.default
         ./hosts/blade/configuration.nix
+        inputs.chaotic.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
