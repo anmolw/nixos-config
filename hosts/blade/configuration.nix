@@ -96,6 +96,7 @@
       firefox
       discord
       mpv
+      spotify
       vlc
       moonlight-qt
       tree
@@ -160,8 +161,14 @@
   services.openssh.openFirewall = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    57621 # spotify
+  ];
+
+  networking.firewall.allowedUDPPorts = [
+    5353 # spotify
+  ];
+
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
