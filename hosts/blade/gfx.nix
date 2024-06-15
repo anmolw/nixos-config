@@ -1,6 +1,9 @@
 {pkgs, ...}: {
   # Intel specific video drivers and video acceleration
   services.xserver.videoDrivers = ["modesetting"];
+  environment.variables = {
+    XCURSOR_SIZE = "42";
+  };
 
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
