@@ -23,11 +23,13 @@
     nixpkgs,
     ...
   } @ inputs: {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
     nixosConfigurations.blade = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         inputs.home-manager.nixosModules.default
-        ./hosts/blade/configuration.nix
+        ./nixos/hosts/blade/configuration.nix
         inputs.chaotic.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
@@ -48,7 +50,7 @@
       modules = [
         inputs.disko.nixosModules.disko
         inputs.home-manager.nixosModules.default
-        ./hosts/relic/configuration.nix
+        ./nixos/hosts/relic/configuration.nix
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

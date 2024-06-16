@@ -10,7 +10,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./gfx.nix
+    ./disko-configuration.nix
+    ./nfs.nix
+    ./network.nix
+    ./ksmbd.nix
+    ../../modules/podman.nix
   ];
 
   # Nix settings
@@ -23,22 +27,21 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Kernel setup
-  boot.kernelParams = [
-    "nvme_core.default_ps_max_latency_us=0"
-  ];
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "blade"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  # Media disk
+  fileSystems = {
+    "/srv/media" = {
+      device = "/dev/disk/by-uuid/7460472b-a42e-4804-975b-ace6fd36a01f";
+      fsType = "ext4";
+    };
+  };
+
+  services.tailscale.enable = true;
+  services.tailscale.extraUpFlags = ["--stateful-filtering=false"];
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -48,69 +51,29 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the Plasma 6 Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.enableHidpi = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # rtkit is optional but recommended
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-  };
-
-  # Enable power profiles
-  services.power-profiles-daemon.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  # Intel specific video drivers and video acceleration
+  # services.xserver.videoDrivers = ["modesetting"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anmol = {
     isNormalUser = true;
     home = "/home/anmol";
+    uid = 1000;
     createHome = true;
     shell = pkgs.zsh;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop"];
-    packages = with pkgs; [
-      firefox
-      discord
-      mpv
-      spotify
-      vlc
-      moonlight-qt
-      tree
-      btop
-    ];
+    linger = true;
+    extraGroups = ["wheel" "docker" "media"]; # Enable sudo and docker usage
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"];
   };
 
-  # Enable flatpak
-  services.flatpak.enable = true;
+  # No initial root password for the purpose of setting up the system unattended
+  users.users.root.initialHashedPassword = "";
 
-  services.tailscale.enable = true;
+  users.groups.media.gid = 1002;
 
   environment.systemPackages = with pkgs; [
     aria2
+    btop
     croc
     curl
     eza
@@ -118,29 +81,18 @@
     fzf
     git
     micro
-    nvme-cli
-    pciutils
-    usbutils
+    nfs-utils
+    pyenv
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
   ];
-
-  programs.dconf.enable = true;
 
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
 
   programs.nh = {
     enable = true;
-    flake = "/home/anmol/Code/nixos-config";
-  };
-
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-      "widget.use-xdg-desktop-portal.mime-handler" = 1;
-    };
+    flake = "/home/anmol/nixos-config";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -153,24 +105,10 @@
 
   # List services that you want to enable:
 
-  services.fwupd.enable = true;
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.openFirewall = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    57621 # spotify
-  ];
-
-  networking.firewall.allowedUDPPorts = [
-    5353 # spotify
-  ];
-
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -193,5 +131,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
