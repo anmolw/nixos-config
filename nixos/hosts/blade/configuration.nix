@@ -91,7 +91,6 @@
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop"];
     packages = with pkgs; [
       firefox
-      discord
       mpv
       spotify
       vlc

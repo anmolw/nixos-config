@@ -36,11 +36,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.anmol.imports = [
             inputs.nix-index-database.hmModules.nix-index
-            ./home/general.nix
-            ./home/development.nix
-            ./home/ssh.nix
-            ./home/vscode.nix
-            ./home/nixos-specific.nix
+            ./home/profiles/blade.nix
           ];
         }
       ];
@@ -55,8 +51,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.anmol.imports = [
-            ./home/general.nix
-            ./home/nixos-specific.nix
+            ./home/profiles/relic.nix
           ];
         }
       ];
