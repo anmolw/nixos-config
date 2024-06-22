@@ -5,6 +5,7 @@
 
   programs.zsh = {
     enable = true;
+    dotDir = ".config/zsh";
     enableCompletion = true;
     syntaxHighlighting.enable = true;
   };
@@ -38,6 +39,9 @@
     baseIndex = 1;
     prefix = "C-a";
     mouse = true;
+    extraConfig = ''
+      set -g default-terminal "tmux-256color"
+    '';
   };
 
   programs.eza = {

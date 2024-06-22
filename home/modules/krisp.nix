@@ -1,3 +1,5 @@
+# Taken from m1cr0man's nix-configs repo
+# https://github.com/m1cr0man/nix-configs/blob/374c28ea2e1c057059fb4e03553501c395c88518/homes/deck/krisp.nix
 # Adapted from https://github.com/NixOS/nixpkgs/issues/195512#issuecomment-1814318443
 # Changes:
 #  - Pull the script from sersorrel directly
