@@ -13,6 +13,16 @@
     enable = true;
   };
 
+  programs.micro = {
+    enable = true;
+    settings = {
+      autosu = true;
+      mkparents = true;
+      scrollbar = true;
+      tabsize = 2;
+    };
+  };
+
   programs.bat.enable = true;
   programs.zoxide.enable = true;
 
