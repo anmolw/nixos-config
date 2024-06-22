@@ -2,8 +2,11 @@
   home.packages = with pkgs; [
     nil
     nixd
-    pyenv
   ];
+
+  programs.mise = {
+    enable = true;
+  };
 
   programs.direnv = {
     enable = true;
