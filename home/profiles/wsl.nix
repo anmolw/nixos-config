@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../modules/shell.nix
+    ../modules/p10k.nix
     ../modules/development.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,10 +23,9 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = with pkgs; [
     nh
+    uv
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -43,6 +43,11 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.btop = {
+    enable = true;
+    settings.proc_gradient = false;
+  };
 
   programs.mise = {
     globalConfig = {
@@ -68,22 +73,6 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/anmol/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR = "micro";
     FLAKE = "/home/anmol/code/nixos-config";

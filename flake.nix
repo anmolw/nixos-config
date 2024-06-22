@@ -35,7 +35,8 @@
   } @ inputs: {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-    homeConfigurations.wsl = let
+    # WSL Home manager configuration
+    homeConfigurations."anmol@desktop" = let
       pkgs = import nixpkgs-unstable {system = "x86_64-linux";};
     in
       home-manager-unstable.lib.homeManagerConfiguration {
