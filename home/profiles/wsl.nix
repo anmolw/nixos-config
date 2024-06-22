@@ -3,7 +3,12 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  wsl2-ssh-agent = pkgs.fetchurl {
+    url = "https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.4/wsl2-ssh-agent";
+    hash = "sha256-cecxTYdLjxFZPXcMW8j/NJugaCufqP9Yq/HcAnpslJM=";
+  };
+in {
   imports = [
     ../modules/shell.nix
     ../modules/p10k.nix
@@ -49,9 +54,19 @@
     settings.proc_gradient = false;
   };
 
+  home.file.".local/bin/wsl2-ssh-agent" = {
+    source = wsl2-ssh-agent;
+    executable = true;
+  };
+
+  programs.zsh.initExtra = ''
+    eval $($HOME/.local/bin/wsl2-ssh-agent)
+  '';
+
   programs.mise = {
     globalConfig = {
       tools = {
+        usage = "latest";
         node = "lts";
         python = "3.12";
       };
@@ -72,6 +87,10 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   home.sessionVariables = {
     EDITOR = "micro";
