@@ -1,7 +1,11 @@
-{pkgs, lib, config, ...}:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
-    ../modules/general.nix
+    ../modules/shell.nix
     ../modules/development.nix
     ../modules/ssh.nix
     ../modules/vscode.nix
