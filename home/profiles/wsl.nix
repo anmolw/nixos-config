@@ -28,6 +28,8 @@ in {
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  targets.genericLinux.enable = true;
+
   home.packages = with pkgs; [
     nh
     uv
@@ -90,6 +92,7 @@ in {
 
   home.sessionPath = [
     "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
   ];
 
   home.sessionVariables = {
