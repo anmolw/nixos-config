@@ -54,12 +54,11 @@
         specialArgs = {inherit pkgs-unstable;};
         modules = [
           home-manager.nixosModules.default
-          inputs.chaotic.nixosModules.default
+          # inputs.chaotic.nixosModules.default
           ./nixos/hosts/blade/configuration.nix
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home.stateVersion = "24.05";
             home-manager.users.anmol.imports = [
               inputs.nix-index-database.hmModules.nix-index
               ./home/profiles/blade.nix
@@ -81,7 +80,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home.stateVersion = "24.05";
             home-manager.users.anmol.imports = [
               ./home/profiles/relic.nix
             ];
