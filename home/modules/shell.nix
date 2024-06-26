@@ -7,8 +7,17 @@
     enable = true;
     dotDir = ".config/zsh";
     enableCompletion = true;
-    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+    # syntaxHighlighting.enable = true;
   };
+
+  programs.zsh.plugins = [
+    {
+      name = "fast-syntax-highlighting";
+      src = pkgs.zsh-fast-syntax-highlighting;
+      file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
+    }
+  ];
 
   programs.atuin = {
     enable = true;
