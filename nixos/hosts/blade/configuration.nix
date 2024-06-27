@@ -37,6 +37,19 @@
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.dns = "systemd-resolved";
+
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+    fallbackDns = [
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+      "9.9.9.9#dns.quad9.net"
+    ];
+    domains = ["~."];
+    dnssec = "true";
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -125,6 +138,7 @@
     pciutils
     usbutils
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wireguard-tools
     wget
   ];
 
