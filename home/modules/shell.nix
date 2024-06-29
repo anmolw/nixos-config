@@ -19,6 +19,11 @@
     }
   ];
 
+  programs.btop = {
+    enable = true;
+    settings.proc_gradient = false;
+  };
+
   programs.atuin = {
     enable = true;
   };
