@@ -51,11 +51,6 @@ in {
     # '')
   ];
 
-  programs.btop = {
-    enable = true;
-    settings.proc_gradient = false;
-  };
-
   home.file.".local/bin/wsl2-ssh-agent" = {
     source = wsl2-ssh-agent;
     executable = true;
@@ -71,6 +66,8 @@ in {
         usage = "latest";
         node = "lts";
         python = "3.12";
+        yarn = "latest";
+        pnpm = "latest";
       };
     };
   };
