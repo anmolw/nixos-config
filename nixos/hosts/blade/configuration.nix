@@ -16,6 +16,11 @@
     ../../modules/fonts.nix
   ];
 
+  # Secrets set-up
+  sops.defaultSopsFile = "./secrets/secrets.yaml";
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/anmol/.config/sops/age/keys.txt";
+
   # Nix settings
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["anmol"];

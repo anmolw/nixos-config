@@ -6,6 +6,10 @@
     nixpkgs-nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,6 +57,7 @@
         # specialArgs = {inherit inputs;};
         specialArgs = {inherit pkgs-unstable;};
         modules = [
+          inputs.sops-nix.nixosModules.default
           home-manager.nixosModules.default
           # inputs.chaotic.nixosModules.default
           ./nixos/hosts/blade/configuration.nix
