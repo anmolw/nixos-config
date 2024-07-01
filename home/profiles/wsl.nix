@@ -85,6 +85,7 @@ in {
   };
 
   home.sessionPath = [
+    "/mnt/c/Users/anmol/AppData/Local/Programs/Microsoft VS Code/bin"
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
   ];
