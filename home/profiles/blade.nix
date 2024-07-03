@@ -15,6 +15,8 @@
     ../modules/nixos-specific.nix
   ];
 
+  nixpkgs.overlays = [(import ../../../overlays/doggo.nix)];
+
   home.stateVersion = "24.05";
 
   programs.discord.enable = true;

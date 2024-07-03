@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
@@ -36,12 +36,16 @@
     home-manager,
     home-manager-unstable,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    system = "x86_64-linux";
+  in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     # WSL Home manager configuration
     homeConfigurations."anmol@desktop" = let
-      pkgs = import nixpkgs-unstable {system = "x86_64-linux";};
+      pkgs = import nixpkgs-unstable {
+        inherit system;
+      };
     in
       home-manager-unstable.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -51,11 +55,11 @@
       };
 
     nixosConfigurations.blade = let
-      pkgs-unstable = import nixpkgs-nixos-unstable {system = "x86_64-linux";};
+      pkgs-unstable = import nixpkgs-nixos-unstable {inherit system;};
     in
       nixpkgs.lib.nixosSystem {
         # specialArgs = {inherit inputs;};
-        specialArgs = {inherit pkgs-unstable;};
+        specialArgs = {inherit inputs pkgs-unstable;};
         modules = [
           inputs.sops-nix.nixosModules.default
           home-manager.nixosModules.default
@@ -73,11 +77,11 @@
       };
 
     nixosConfigurations.relic = let
-      pkgs-unstable = import nixpkgs-nixos-unstable {system = "x86_64-linux";};
+      pkgs-unstable = import nixpkgs-nixos-unstable {inherit system;};
     in
       nixpkgs.lib.nixosSystem {
         # specialArgs = {inherit inputs;};
-        specialArgs = {inherit pkgs-unstable;};
+        specialArgs = {inherit inputs pkgs-unstable;};
         modules = [
           inputs.disko.nixosModules.disko
           home-manager.nixosModules.default
