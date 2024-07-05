@@ -13,7 +13,6 @@
     ../modules/vscode.nix
     ../modules/krisp.nix
     ../modules/nixos-specific.nix
-    ../../overlays/doggo.nix
   ];
 
   home.stateVersion = "24.05";
