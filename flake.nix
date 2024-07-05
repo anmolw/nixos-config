@@ -2,8 +2,8 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-nixos-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     sops-nix = {
@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-unstable = {
@@ -31,7 +31,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-nixos-unstable,
+    nixpkgs-nixos-stable,
     nixpkgs-unstable,
     home-manager,
     home-manager-unstable,
@@ -55,11 +55,10 @@
       };
 
     nixosConfigurations.blade = let
-      pkgs-unstable = import nixpkgs-nixos-unstable {inherit system;};
+      stablePkgs = import nixpkgs-nixos-stable {inherit system;};
     in
       nixpkgs.lib.nixosSystem {
-        # specialArgs = {inherit inputs;};
-        specialArgs = {inherit inputs pkgs-unstable;};
+        specialArgs = {inherit inputs stablePkgs;};
         modules = [
           inputs.sops-nix.nixosModules.default
           home-manager.nixosModules.default
@@ -77,11 +76,10 @@
       };
 
     nixosConfigurations.relic = let
-      pkgs-unstable = import nixpkgs-nixos-unstable {inherit system;};
+      stablePkgs = import nixpkgs-nixos-stable {inherit system;};
     in
       nixpkgs.lib.nixosSystem {
-        # specialArgs = {inherit inputs;};
-        specialArgs = {inherit inputs pkgs-unstable;};
+        specialArgs = {inherit inputs stablePkgs;};
         modules = [
           inputs.disko.nixosModules.disko
           home-manager.nixosModules.default
