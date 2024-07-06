@@ -21,8 +21,12 @@
     enable = true;
     dnssec = "true";
     domains = ["~."];
-    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-    dnsovertls = "true";
+    fallbackDns = [
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+      "9.9.9.9#dns.quad9.net"
+    ];
+    dnsovertls = "opportunistic";
   };
 
   # Open ports in the firewall.
