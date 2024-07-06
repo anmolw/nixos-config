@@ -9,6 +9,9 @@
     enable = true;
   };
 
+  programs.git.enable = true;
+  programs.git.diff-so-fancy.enable = true;
+
   programs.direnv = {
     enable = true;
     stdlib = ''

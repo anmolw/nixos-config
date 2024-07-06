@@ -57,8 +57,8 @@ in {
     eval $($HOME/.local/bin/wsl2-ssh-agent)
   '';
 
-  programs.fish.loginShellInit = ''
-    $HOME/.local/bin/wsl2-ssh-agent | source
+  programs.fish.shellInit = ''
+    set -x SSH_AUTH_SOCK $($HOME/.local/bin/wsl2-ssh-agent | sed 's/;.*//' | cut -d '=' -f 2)
   '';
 
   programs.mise = {
