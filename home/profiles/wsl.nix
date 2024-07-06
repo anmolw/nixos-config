@@ -57,6 +57,10 @@ in {
     eval $($HOME/.local/bin/wsl2-ssh-agent)
   '';
 
+  programs.fish.loginShellInit = ''
+    $HOME/.local/bin/wsl2-ssh-agent | source
+  '';
+
   programs.mise = {
     globalConfig = {
       tools = {
