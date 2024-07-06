@@ -74,6 +74,7 @@
   environment.systemPackages = with pkgs; [
     aria2
     btop
+    compsize
     croc
     curl
     eza

@@ -132,6 +132,7 @@
 
   environment.systemPackages = with pkgs; [
     aria2
+    compsize
     croc
     curl
     eza
