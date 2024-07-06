@@ -21,6 +21,21 @@
     }
   ];
 
+  programs.fish = {
+    enable = true;
+  };
+
+  programs.fish.plugins = [
+    {
+      name = "tide";
+      src = pkgs.fishPlugins.tide;
+    }
+    {
+      name = "done";
+      src = pkgs.fishPlugins.done;
+    }
+  ];
+
   programs.btop = {
     enable = true;
     settings.proc_gradient = false;
