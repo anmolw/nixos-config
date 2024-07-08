@@ -17,6 +17,14 @@
 
   home.stateVersion = "24.05";
 
+  home.packages = with pkgs; [
+    obsidian
+  ];
+
+  programs.alacritty = {
+    enable = true;
+  };
+
   programs.discord.enable = true;
   programs.discord.wrapDiscord = true;
 }
