@@ -7,8 +7,14 @@
 
   programs.mise = {
     enable = true;
+    globalConfig = {
+      tools = {
+        usage = "latest";
+      };
+    };
   };
 
+  programs.gh.enable = true;
   programs.git.enable = true;
   programs.git.diff-so-fancy.enable = true;
 
