@@ -9,6 +9,7 @@
     ../modules/p10k.nix
     ../modules/development.nix
     ../modules/ssh.nix
+    ../modules/neovim.nix
     ../modules/fonts.nix
     ../modules/vscode.nix
     ../modules/krisp.nix

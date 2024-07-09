@@ -15,40 +15,38 @@
     dotDir = ".config/zsh";
     enableCompletion = true;
     autosuggestion.enable = true;
+    plugins = [
+      {
+        name = "fast-syntax-highlighting";
+        src = pkgs.zsh-fast-syntax-highlighting;
+        file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
+      }
+    ];
     # syntaxHighlighting.enable = true;
   };
 
-  programs.zsh.plugins = [
-    {
-      name = "fast-syntax-highlighting";
-      src = pkgs.zsh-fast-syntax-highlighting;
-      file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
-    }
-  ];
-
   programs.fish = {
     enable = true;
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+      {
+        name = "done";
+        src = pkgs.fishPlugins.done.src;
+      }
+      {
+        name = "bangbang";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "plugin-bang-bang";
+          rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
+          sha256 = "sha256-oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
+        };
+      }
+    ];
   };
-
-  programs.fish.plugins = [
-    {
-      name = "tide";
-      src = pkgs.fishPlugins.tide.src;
-    }
-    {
-      name = "done";
-      src = pkgs.fishPlugins.done.src;
-    }
-    {
-      name = "bangbang";
-      src = pkgs.fetchFromGitHub {
-        owner = "oh-my-fish";
-        repo = "plugin-bang-bang";
-        rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
-        sha256 = "sha256-oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
-      };
-    }
-  ];
 
   programs.btop = {
     enable = true;
