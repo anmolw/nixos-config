@@ -78,6 +78,7 @@
     croc
     curl
     eza
+    fastfetch
     file
     fzf
     git

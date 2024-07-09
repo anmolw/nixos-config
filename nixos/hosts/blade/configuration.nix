@@ -152,7 +152,7 @@
   programs.dconf.enable = true;
 
   programs.zsh.enable = true;
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = ["/share/zsh" "/share/fish"];
 
   programs.nh = {
     enable = true;
