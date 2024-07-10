@@ -88,6 +88,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.anmol.imports = [
+              inputs.nix-index-database.hmModules.nix-index
               ./home/profiles/relic.nix
             ];
           }
