@@ -58,8 +58,17 @@ in {
     eval $($HOME/.local/bin/wsl2-ssh-agent)
   '';
 
+  # programs.fish.shellInit = ''
+  #   set -x SSH_AUTH_SOCK $($HOME/.local/bin/wsl2-ssh-agent | sed 's/;.*//' | cut -d '=' -f 2)
+  # '';
+
   programs.fish.shellInit = ''
-    set -x SSH_AUTH_SOCK $($HOME/.local/bin/wsl2-ssh-agent | sed 's/;.*//' | cut -d '=' -f 2)
+    wsl2-ssh-agent | source
+  '';
+
+  programs.tmux.extraConfig = ''
+    set -g default-command ${pkgs.fish}/bin/fish
+    set -g default-shell ${pkgs.fish}/bin/fish
   '';
 
   programs.mise = {
