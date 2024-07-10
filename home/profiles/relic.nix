@@ -10,5 +10,9 @@
     ../modules/nixos-specific.nix
   ];
 
+  home.packages = with pkgs; [
+    fastfetch
+  ];
+
   home.stateVersion = "24.05";
 }

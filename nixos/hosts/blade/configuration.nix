@@ -56,6 +56,14 @@
     dnssec = "true";
   };
 
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (subject.isInGroup("users") && action.id === "org.freedesktop.NetworkManager.settings.modify.system") {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -121,7 +129,6 @@
       vlc
       moonlight-qt
       tree
-      btop
     ];
   };
 
@@ -136,7 +143,6 @@
     croc
     curl
     eza
-    fastfetch
     file
     fzf
     git

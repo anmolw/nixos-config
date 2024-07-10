@@ -19,11 +19,20 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
+    fastfetch
     obsidian
+    python3
+    ktailctl
   ];
 
   programs.alacritty = {
     enable = true;
+    settings = {
+      font.normal = {
+        family = "Hack Nerd Font Mono";
+        style = "Regular";
+      };
+    };
   };
 
   programs.discord.enable = true;
