@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../modules/shell.nix
+    ../modules/shell
     ../modules/p10k.nix
     ../modules/nixos-specific.nix
   ];

@@ -26,6 +26,11 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    tmux-which-key = {
+      url = "github:higherorderfunctor/tmux-which-key/feat/adds-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -49,6 +54,7 @@
     in
       home-manager-unstable.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/profiles/wsl.nix
         ];

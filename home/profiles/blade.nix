@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../modules/shell.nix
+    ../modules/shell
     ../modules/p10k.nix
     ../modules/development.nix
     ../modules/ssh.nix

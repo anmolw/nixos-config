@@ -10,7 +10,7 @@
   };
 in {
   imports = [
-    ../modules/shell.nix
+    ../modules/shell
     ../modules/p10k.nix
     ../modules/neovim.nix
     ../modules/development.nix
