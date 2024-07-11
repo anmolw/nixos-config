@@ -69,6 +69,7 @@
 
   programs.bat.enable = true;
   programs.zoxide.enable = true;
+  programs.fd.enable = true;
 
   programs.tealdeer = {
     enable = true;

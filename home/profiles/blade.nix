@@ -19,10 +19,11 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
+    btdu
     fastfetch
+    ktailctl
     obsidian
     python3
-    ktailctl
   ];
 
   programs.alacritty = {
@@ -33,6 +34,10 @@
         style = "Regular";
       };
     };
+  };
+
+  programs.wezterm = {
+    enable = true;
   };
 
   programs.tmux.extraConfig = ''
