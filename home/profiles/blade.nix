@@ -33,6 +33,10 @@
         family = "Hack Nerd Font Mono";
         style = "Regular";
       };
+      shell = {
+        program = "tmux";
+        args = ["new" "-As0"];
+      };
     };
   };
 
