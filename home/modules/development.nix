@@ -14,7 +14,12 @@
     };
   };
 
-  programs.gh.enable = true;
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
+  };
   programs.git.enable = true;
   programs.git.diff-so-fancy.enable = true;
 
