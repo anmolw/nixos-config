@@ -289,8 +289,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-nixos-stable": "nixpkgs-nixos-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sops-nix": "sops-nix",
-        "tmux-which-key": "tmux-which-key"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -326,27 +325,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
-        "type": "github"
-      }
-    },
-    "tmux-which-key": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1719802049,
-        "narHash": "sha256-3HOn6Q2KV7s4cS3XT4PpwP+ordYxpfzYHmHZ+BGrueU=",
-        "owner": "higherorderfunctor",
-        "repo": "tmux-which-key",
-        "rev": "71b119ddf46342fd49699722c50fdfe054722ab0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "higherorderfunctor",
-        "ref": "feat/adds-nix-flake",
-        "repo": "tmux-which-key",
         "type": "github"
       }
     },
