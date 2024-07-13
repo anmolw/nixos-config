@@ -3,6 +3,7 @@
     alejandra
     nil
     nixd
+    tea
   ];
 
   programs.mise = {
