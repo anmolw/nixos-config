@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -17,11 +18,38 @@
     ../../modules/podman.nix
   ];
 
+  # Secrets setup
+  sops.defaultSopsFile = ../../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+
+  sops.secrets."relic/nix-serve-priv-key" = {
+  };
+
   # Nix settings
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["anmol"];
   nixpkgs.config.allowUnfree = true;
-  nix.optimise.enable = true;
+  nix.optimise.automatic = true;
+
+  # Home-manager
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.sharedModules = [
+    inputs.sops-nix.homeManagerModules.sops
+    inputs.nix-index-database.hmModules.nix-index
+  ];
+
+  # HM Secrets setup
+  home-manager.users.anmol.sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+  };
+
+  home-manager.users.anmol.imports = [
+    ../../../home/profiles/relic.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -36,6 +64,13 @@
       device = "/dev/disk/by-uuid/7460472b-a42e-4804-975b-ace6fd36a01f";
       fsType = "ext4";
     };
+  };
+
+  # Binary cache for other machines
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = config.sops.secrets."relic/nix-serve-priv-key".path;
+    openFirewall = true;
   };
 
   services.tailscale.enable = true;

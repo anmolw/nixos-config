@@ -3,8 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-nixos-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -18,10 +17,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-unstable = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,10 +26,8 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-nixos-stable,
-    nixpkgs-unstable,
+    nixpkgs-stable,
     home-manager,
-    home-manager-unstable,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -43,11 +36,11 @@
 
     # WSL Home manager configuration
     homeConfigurations."anmol@desktop" = let
-      pkgs = import nixpkgs-unstable {
+      pkgs = import nixpkgs {
         inherit system;
       };
     in
-      home-manager-unstable.lib.homeManagerConfiguration {
+      home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {inherit inputs;};
         modules = [
@@ -56,7 +49,7 @@
       };
 
     nixosConfigurations.blade = let
-      stablePkgs = import nixpkgs-nixos-stable {inherit system;};
+      stablePkgs = import nixpkgs-stable {inherit system;};
     in
       nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs stablePkgs;};
@@ -65,34 +58,19 @@
           home-manager.nixosModules.default
           # inputs.chaotic.nixosModules.default
           ./nixos/hosts/blade/configuration.nix
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.anmol.imports = [
-              inputs.nix-index-database.hmModules.nix-index
-              ./home/profiles/blade.nix
-            ];
-          }
         ];
       };
 
     nixosConfigurations.relic = let
-      stablePkgs = import nixpkgs-nixos-stable {inherit system;};
+      stablePkgs = import nixpkgs-stable {inherit system;};
     in
       nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs stablePkgs;};
         modules = [
+          inputs.sops-nix.nixosModules.default
           inputs.disko.nixosModules.disko
           home-manager.nixosModules.default
           ./nixos/hosts/relic/configuration.nix
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.anmol.imports = [
-              inputs.nix-index-database.hmModules.nix-index
-              ./home/profiles/relic.nix
-            ];
-          }
         ];
       };
   };

@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -16,16 +17,37 @@
     ../../modules/fonts.nix
   ];
 
-  # Secrets set-up
-  sops.defaultSopsFile = "./secrets/secrets.yaml";
+  # Secrets setup
+  sops.defaultSopsFile = ../../../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/anmol/.config/sops/age/keys.txt";
+  sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
   # Nix settings
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["anmol"];
+  nix.settings.substituters = ["http://192.168.29.120:5000"];
+  nix.settings.trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ="];
   nixpkgs.config.allowUnfree = true;
-  nix.optimise.enable = true;
+  nix.optimise.automatic = true;
+
+  # Home-manager
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.sharedModules = [
+    inputs.sops-nix.homeManagerModules.sops
+    inputs.nix-index-database.hmModules.nix-index
+  ];
+
+  # HM Secrets setup
+  home-manager.users.anmol.sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+  };
+
+  home-manager.users.anmol.imports = [
+    ../../../home/profiles/blade.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
