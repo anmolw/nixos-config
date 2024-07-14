@@ -25,6 +25,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["anmol"];
   nixpkgs.config.allowUnfree = true;
+  nix.optimise.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
