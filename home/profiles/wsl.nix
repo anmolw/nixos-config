@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   wsl2-ssh-agent = pkgs.fetchurl {
@@ -10,6 +11,7 @@
   };
 in {
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
     ../modules/shell
     ../modules/p10k.nix
     ../modules/neovim.nix
@@ -19,6 +21,11 @@ in {
   # manage.
   home.username = "anmol";
   home.homeDirectory = "/home/anmol";
+
+  # Secrets setup
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
