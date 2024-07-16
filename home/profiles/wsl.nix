@@ -109,11 +109,13 @@ in {
     "/mnt/c/Users/anmol/AppData/Local/Programs/Microsoft VS Code/bin"
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
+    "$HOME/.local/share/pnpm"
   ];
 
   home.sessionVariables = {
     EDITOR = "micro";
     FLAKE = "/home/anmol/code/nixos-config";
+    PNPM_HOME = "$HOME/.local/share/pnpm";
   };
 
   # Let Home Manager install and manage itself.
