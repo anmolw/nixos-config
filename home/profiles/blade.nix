@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../modules/shell
-    ../modules/p10k.nix
     ../modules/development.nix
     ../modules/ssh.nix
     ../modules/neovim.nix
@@ -25,6 +24,8 @@
     obsidian
     python3
   ];
+
+  programs.zsh.p10k.enable = true;
 
   programs.alacritty = {
     enable = true;
