@@ -13,7 +13,6 @@ in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ../modules/shell
-    ../modules/p10k.nix
     ../modules/neovim.nix
     ../modules/development.nix
   ];
@@ -64,6 +63,8 @@ in {
   programs.zsh.initExtra = ''
     eval $($HOME/.local/bin/wsl2-ssh-agent)
   '';
+
+  programs.zsh.p10k.enable = true;
 
   # programs.fish.shellInit = ''
   #   set -x SSH_AUTH_SOCK $($HOME/.local/bin/wsl2-ssh-agent | sed 's/;.*//' | cut -d '=' -f 2)

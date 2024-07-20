@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../modules/shell
-    ../modules/p10k.nix
     ../modules/nixos-specific.nix
   ];
 
@@ -14,6 +13,8 @@
     btdu
     fastfetch
   ];
+
+  programs.zsh.p10k.enable = true;
 
   home.stateVersion = "24.05";
 }
