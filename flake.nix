@@ -56,7 +56,7 @@
         modules = [
           inputs.sops-nix.nixosModules.default
           home-manager.nixosModules.default
-          # inputs.chaotic.nixosModules.default
+          inputs.chaotic.nixosModules.default
           ./nixos/hosts/blade/configuration.nix
         ];
       };

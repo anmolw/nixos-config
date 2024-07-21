@@ -59,7 +59,7 @@
     "zswap.enabled=1"
     "zswap.compressor=lz4"
   ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   networking.hostName = "blade"; # Define your hostname.
   # Pick only one of the below networking options.
