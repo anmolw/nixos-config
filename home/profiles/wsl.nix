@@ -22,7 +22,7 @@ in {
   home.homeDirectory = "/home/anmol";
 
   # Secrets setup
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/wsl.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
