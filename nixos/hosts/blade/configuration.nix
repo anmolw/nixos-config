@@ -18,7 +18,7 @@
   ];
 
   # Secrets setup
-  sops.defaultSopsFile = ../../../secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../../secrets/blade.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
@@ -40,7 +40,7 @@
 
   # HM Secrets setup
   home-manager.users.anmol.sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFile = ../../../secrets/blade.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = /home/anmol/.config/sops/age/keys.txt;
   };
