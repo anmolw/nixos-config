@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     dua
     erdtree
+    nix-search-cli
   ];
 
   programs.btop = {

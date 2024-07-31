@@ -22,6 +22,8 @@
     fastfetch
     ktailctl
     obsidian
+    jellyfin-media-player
+    moonlight-qt
     python3
   ];
 

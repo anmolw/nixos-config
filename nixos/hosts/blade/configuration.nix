@@ -150,7 +150,6 @@
       mpv
       spotify
       vlc
-      moonlight-qt
       tree
     ];
   };
