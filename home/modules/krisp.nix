@@ -28,6 +28,8 @@
 
   wrappedDiscord = pkgs.runCommand "discord" {} ''
     mkdir -p $out/share/applications $out/bin
+    ln -s ${pkgs.discord}/share/pixmaps $out/share/pixmaps
+    ln -s ${pkgs.discord}/share/icons $out/share/icons
     ln -s ${wrapperScript} $out/bin/discord
     ${pkgs.gnused}/bin/sed 's!Exec=.*!Exec=${wrapperScript}!g' ${pkgs.discord}/share/applications/discord.desktop > $out/share/applications/discord.desktop
   '';
