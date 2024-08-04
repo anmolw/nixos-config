@@ -56,4 +56,6 @@
       "--group-directories-first"
     ];
   };
+
+  programs.yazi.enable = true;
 }
