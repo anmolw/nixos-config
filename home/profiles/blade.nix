@@ -25,9 +25,14 @@
     jellyfin-media-player
     moonlight-qt
     python3
+    syncthingtray-minimal
   ];
 
   programs.zsh.p10k.enable = true;
+
+  services.syncthing = {
+    enable = true;
+  };
 
   programs.alacritty = {
     enable = true;
@@ -41,6 +46,10 @@
         args = ["new" "-As0"];
       };
     };
+  };
+
+  programs.kitty = {
+    enable = true;
   };
 
   programs.wezterm = {
