@@ -61,6 +61,10 @@
   ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
+  systemd.units."dev-tpmrm0.device".enable = false;
+  systemd.targets."tpm".enable = false;
+  systemd.targets."tpm2".enable = false;
+
   networking.hostName = "blade"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
