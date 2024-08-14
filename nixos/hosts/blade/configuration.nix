@@ -43,6 +43,10 @@
     defaultSopsFile = ../../../secrets/blade.yaml;
     defaultSopsFormat = "yaml";
     age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+    secrets = {
+      "ssh-keys/blade" = {};
+      "ssh-keys/blade-github" = {};
+    };
   };
 
   home-manager.users.anmol.imports = [

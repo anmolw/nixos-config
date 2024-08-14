@@ -23,7 +23,7 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
-  sops.secrets."relic/nix-serve-priv-key" = {
+  sops.secrets."nix-serve-priv-key" = {
   };
 
   # Nix settings
@@ -69,7 +69,7 @@
   # Binary cache for other machines
   services.nix-serve = {
     enable = true;
-    secretKeyFile = config.sops.secrets."relic/nix-serve-priv-key".path;
+    secretKeyFile = config.sops.secrets."nix-serve-priv-key".path;
     openFirewall = true;
   };
 
