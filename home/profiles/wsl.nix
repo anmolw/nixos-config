@@ -13,7 +13,6 @@ in {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ../modules/shell
-    ../modules/neovim.nix
     ../modules/development.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
