@@ -6,6 +6,7 @@
   lib,
   pkgs,
   inputs,
+  stablePkgs,
   ...
 }: {
   imports = [
@@ -169,7 +170,7 @@
 
   environment.systemPackages = with pkgs; [
     aria2
-    compsize
+    stablePkgs.compsize
     croc
     curl
     eza
