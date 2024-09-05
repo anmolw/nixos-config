@@ -57,5 +57,12 @@
     ];
   };
 
+  programs.zellij = {
+    enable = true;
+    settings = {
+      theme = "catppuccin-mocha";
+    };
+  };
+
   programs.yazi.enable = true;
 }
