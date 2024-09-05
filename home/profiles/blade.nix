@@ -37,7 +37,7 @@
     enable = true;
     settings = {
       font.normal = {
-        family = "Hack Nerd Font Mono";
+        family = "FiraCode Nerd Font Mono";
         style = "Regular";
       };
       shell = {
