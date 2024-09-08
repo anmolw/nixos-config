@@ -49,6 +49,15 @@
 
   programs.kitty = {
     enable = true;
+    theme = "Catppuccin-Mocha";
+    font = {
+      name = "Fira Code";
+      size = 12;
+    };
+    settings = {
+      shell = "fish";
+    };
+    shellIntegration.mode = "no-cursor";
   };
 
   programs.wezterm = {
