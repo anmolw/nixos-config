@@ -21,7 +21,14 @@
       git_protocol = "ssh";
     };
   };
-  programs.git.enable = true;
+  
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
+
   programs.git.diff-so-fancy.enable = true;
 
   programs.direnv = {
