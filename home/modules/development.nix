@@ -21,7 +21,7 @@
       git_protocol = "ssh";
     };
   };
-  
+
   programs.git = {
     enable = true;
     extraConfig = {
