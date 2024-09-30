@@ -33,6 +33,24 @@
     enable = true;
   };
 
+  xdg.configFile."ghostty/config".text = ''
+    command = fish
+
+    font-family = Fira Code
+    font-size = 12
+    font-feature = -calt
+    font-feature = -dlig
+    font-feature = -liga
+
+    shell-integration-features = no-cursor
+
+    cursor-style = block
+    cursor-style-blink = false
+
+    theme = catppuccin-mocha
+    window-theme = ghostty
+  '';
+
   programs.alacritty = {
     enable = true;
     settings = {
