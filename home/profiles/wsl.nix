@@ -41,6 +41,8 @@ in {
     uv
     sops
     gum
+    glow
+    pixi
     wishlist
     mods
     # # It is sometimes useful to fine-tune packages, for example, by applying
