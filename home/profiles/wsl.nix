@@ -37,14 +37,14 @@ in {
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
-    nh
-    uv
-    sops
-    gum
     glow
-    pixi
-    wishlist
+    gum
     mods
+    nh
+    pixi
+    sops
+    uv
+    wishlist
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -70,12 +70,10 @@ in {
 
   programs.zsh.p10k.enable = true;
 
-  # programs.fish.shellInit = ''
-  #   set -x SSH_AUTH_SOCK $($HOME/.local/bin/wsl2-ssh-agent | sed 's/;.*//' | cut -d '=' -f 2)
-  # '';
-
   programs.fish.shellInit = ''
-    wsl2-ssh-agent | source
+    if not set -q SSH_AUTH_SOCK
+      SHELL=fish wsl2-ssh-agent | source
+    end
   '';
 
   programs.tmux.extraConfig = ''
