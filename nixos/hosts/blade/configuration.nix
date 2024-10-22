@@ -37,6 +37,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.sharedModules = [
+    inputs.catppuccin.homeManagerModules.catppuccin
     inputs.sops-nix.homeManagerModules.sops
     inputs.nix-index-database.hmModules.nix-index
   ];

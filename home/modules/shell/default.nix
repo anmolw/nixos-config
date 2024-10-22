@@ -35,7 +35,13 @@
     };
   };
 
-  programs.bat.enable = true;
+  programs.bat = {
+    enable = true;
+    extraPackages = with pkgs.bat-extras; [batman];
+    catppuccin.enable = true;
+    catppuccin.flavor = "mocha";
+  };
+
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.fd.enable = true;

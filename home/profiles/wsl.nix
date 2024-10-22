@@ -11,6 +11,7 @@
   };
 in {
   imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
     inputs.sops-nix.homeManagerModules.sops
     ../modules/shell
     ../modules/development.nix

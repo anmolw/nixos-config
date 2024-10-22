@@ -26,6 +26,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -62,6 +63,7 @@
           inputs.sops-nix.nixosModules.default
           home-manager.nixosModules.default
           inputs.chaotic.nixosModules.default
+          inputs.catppuccin.nixosModules.catppuccin
           ./nixos/hosts/blade/configuration.nix
         ];
       };
