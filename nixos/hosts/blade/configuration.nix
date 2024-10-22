@@ -30,6 +30,9 @@
   nix.settings.trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ="];
   nix.settings.extra-substituters = ["https://ghostty.cachix.org"];
   nix.settings.extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
   nixpkgs.config.allowUnfree = true;
   nix.optimise.automatic = true;
 
