@@ -6,6 +6,8 @@
     tea
   ];
 
+  programs.lazygit.enable = true;
+
   programs.mise = {
     enable = true;
     globalConfig = {
