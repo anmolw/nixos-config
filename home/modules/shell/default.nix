@@ -43,6 +43,7 @@
   };
 
   programs.fzf.enable = true;
+  programs.ripgrep.enable = true;
   programs.zoxide.enable = true;
   programs.fd.enable = true;
 
