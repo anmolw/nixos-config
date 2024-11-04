@@ -16,6 +16,7 @@
     ./nfs.nix
     ./network.nix
     ./ksmbd.nix
+    ../../modules/common.nix
     ../../modules/podman.nix
   ];
 

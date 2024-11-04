@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./gfx.nix
     ../../modules/desktop.nix
+    ../../modules/common.nix
     ../../modules/steam.nix
     ../../modules/fonts.nix
   ];
