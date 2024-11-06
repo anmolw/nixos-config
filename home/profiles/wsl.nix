@@ -21,6 +21,8 @@ in {
   home.username = "anmol";
   home.homeDirectory = "/home/anmol";
 
+  nixpkgs.config.allowUnfree = true;
+
   # Secrets setup
   sops.defaultSopsFile = ../../secrets/wsl.yaml;
   sops.defaultSopsFormat = "yaml";
