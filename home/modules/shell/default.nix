@@ -54,6 +54,8 @@
     };
   };
 
+  programs.jq.enable = true;
+
   programs.eza = {
     enable = true;
     icons = "auto";
