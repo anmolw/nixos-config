@@ -5,8 +5,8 @@
   ...
 }: {
   imports = [
-    ../modules/shell
-    ../modules/nixos-specific.nix
+    ../modules/home/shell
+    ../modules/home/nixos-specific.nix
   ];
 
   home.packages = with pkgs; [

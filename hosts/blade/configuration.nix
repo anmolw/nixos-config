@@ -13,14 +13,14 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./gfx.nix
-    ../../modules/desktop.nix
-    ../../modules/common.nix
-    ../../modules/steam.nix
-    ../../modules/fonts.nix
+    ../../modules/nixos/desktop.nix
+    ../../modules/nixos/common.nix
+    ../../modules/nixos/steam.nix
+    ../../modules/nixos/fonts.nix
   ];
 
   # Secrets setup
-  sops.defaultSopsFile = ../../../secrets/blade.yaml;
+  sops.defaultSopsFile = ../../secrets/blade.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
@@ -38,28 +38,30 @@
   nix.optimise.automatic = true;
 
   # Home-manager
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.sharedModules = [
-    inputs.catppuccin.homeManagerModules.catppuccin
-    inputs.sops-nix.homeManagerModules.sops
-    inputs.nix-index-database.hmModules.nix-index
-  ];
-
-  # HM Secrets setup
-  home-manager.users.anmol.sops = {
-    defaultSopsFile = ../../../secrets/blade.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = /home/anmol/.config/sops/age/keys.txt;
-    secrets = {
-      "ssh-keys/blade" = {};
-      "ssh-keys/blade-github" = {};
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    sharedModules = [
+      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.sops-nix.homeManagerModules.sops
+      inputs.nix-index-database.hmModules.nix-index
+    ];
+    users.anmol = {
+      # HM Secrets setup
+      sops = {
+        defaultSopsFile = ../../secrets/blade.yaml;
+        defaultSopsFormat = "yaml";
+        age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+        secrets = {
+          "ssh-keys/blade" = {};
+          "ssh-keys/blade-github" = {};
+        };
+      };
+      imports = [
+        ../../homes/blade.nix
+      ];
     };
   };
-
-  home-manager.users.anmol.imports = [
-    ../../../home/profiles/blade.nix
-  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -177,7 +179,7 @@
 
   environment.systemPackages = with pkgs; [
     aria2
-    stablePkgs.compsize
+    compsize
     croc
     curl
     inputs.ghostty.packages.x86_64-linux.default

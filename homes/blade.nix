@@ -5,13 +5,13 @@
   ...
 }: {
   imports = [
-    ../modules/shell
-    ../modules/development.nix
-    ../modules/ssh.nix
-    ../modules/fonts.nix
-    ../modules/vscode.nix
-    ../modules/krisp.nix
-    ../modules/nixos-specific.nix
+    ../modules/home/shell
+    ../modules/home/development.nix
+    ../modules/home/ssh.nix
+    ../modules/home/fonts.nix
+    ../modules/home/vscode.nix
+    ../modules/home/krisp.nix
+    ../modules/home/nixos-specific.nix
   ];
 
   home.stateVersion = "24.05";
@@ -42,7 +42,7 @@
     font-feature = -dlig
     font-feature = -liga
 
-    shell-integration-features = no-cursor
+    shell-integration-features = no-cursor,sudo
 
     cursor-style = block
     cursor-style-blink = false

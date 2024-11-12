@@ -50,7 +50,7 @@
         inherit pkgs;
         extraSpecialArgs = {inherit inputs;};
         modules = [
-          ./home/profiles/wsl.nix
+          ./homes/wsl.nix
         ];
       };
 
@@ -64,7 +64,7 @@
           home-manager.nixosModules.default
           inputs.chaotic.nixosModules.default
           inputs.catppuccin.nixosModules.catppuccin
-          ./nixos/hosts/blade/configuration.nix
+          ./hosts/blade/configuration.nix
         ];
       };
 
@@ -77,7 +77,7 @@
           inputs.sops-nix.nixosModules.default
           inputs.disko.nixosModules.disko
           home-manager.nixosModules.default
-          ./nixos/hosts/relic/configuration.nix
+          ./hosts/relic/configuration.nix
         ];
       };
   };

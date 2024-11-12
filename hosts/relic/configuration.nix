@@ -16,12 +16,12 @@
     ./nfs.nix
     ./network.nix
     ./ksmbd.nix
-    ../../modules/common.nix
-    ../../modules/podman.nix
+    ../../modules/nixos/common.nix
+    ../../modules/nixos/podman.nix
   ];
 
   # Secrets setup
-  sops.defaultSopsFile = ../../../secrets/relic.yaml;
+  sops.defaultSopsFile = ../../secrets/relic.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
@@ -35,24 +35,25 @@
   nix.optimise.automatic = true;
 
   # Home-manager
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.sharedModules = [
-    inputs.catppuccin.homeManagerModules.catppuccin
-    inputs.sops-nix.homeManagerModules.sops
-    inputs.nix-index-database.hmModules.nix-index
-  ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    sharedModules = [
+      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.sops-nix.homeManagerModules.sops
+      inputs.nix-index-database.hmModules.nix-index
+    ];
+    # HM Secrets setup
+    users.anmol.sops = {
+      defaultSopsFile = ../../secrets/relic.yaml;
+      defaultSopsFormat = "yaml";
+      age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+    };
 
-  # HM Secrets setup
-  home-manager.users.anmol.sops = {
-    defaultSopsFile = ../../../secrets/relic.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+    users.anmol.imports = [
+      ../../homes/relic.nix
+    ];
   };
-
-  home-manager.users.anmol.imports = [
-    ../../../home/profiles/relic.nix
-  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -113,7 +114,7 @@
   environment.systemPackages = with pkgs; [
     aria2
     btop
-    stablePkgs.compsize
+    compsize
     croc
     curl
     eza

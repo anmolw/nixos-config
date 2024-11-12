@@ -13,8 +13,8 @@ in {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
     inputs.sops-nix.homeManagerModules.sops
-    ../modules/shell
-    ../modules/development.nix
+    ../modules/home/shell
+    ../modules/home/development.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,7 +24,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # Secrets setup
-  sops.defaultSopsFile = ../../secrets/wsl.yaml;
+  sops.defaultSopsFile = ../secrets/wsl.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
@@ -40,6 +40,7 @@ in {
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
+    mdcat
     glow
     gum
     mods
