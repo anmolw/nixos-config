@@ -10,6 +10,12 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
       inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
+    sersorrel-sys = {
+      type = "github";
+      owner = "sersorrel";
+      repo = "sys";
+      rev = "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

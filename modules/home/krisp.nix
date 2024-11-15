@@ -9,14 +9,12 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.programs.discord;
 
-  patcher = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/sersorrel/sys/d19bd7c27226870cb262175f33fa2af2ba6bb86b/hm/discord/krisp-patcher.py";
-    hash = "sha256-JTK1LnvdT5QVNP2TcCLBV1x4FR069Xd0Y/njmqhuRsw=";
-  };
+  patcher = "${inputs.sersorrel-sys}/hm/discord/krisp-patcher.py";
 
   python = pkgs.python3.withPackages (ps: [ps.pyelftools ps.capstone]);
 

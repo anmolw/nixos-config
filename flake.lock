@@ -293,7 +293,24 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
+        "sersorrel-sys": "sersorrel-sys",
         "sops-nix": "sops-nix"
+      }
+    },
+    "sersorrel-sys": {
+      "locked": {
+        "lastModified": 1731168894,
+        "narHash": "sha256-uVF3T3e5QYKB5gAeVahagACx8Ls/0mwfR9e02mM9nT8=",
+        "owner": "sersorrel",
+        "repo": "sys",
+        "rev": "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sersorrel",
+        "repo": "sys",
+        "rev": "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc",
+        "type": "github"
       }
     },
     "sops-nix": {
