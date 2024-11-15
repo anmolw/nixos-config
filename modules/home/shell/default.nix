@@ -14,6 +14,7 @@
     dua
     erdtree
     nix-search-cli
+    hyperfine
   ];
 
   programs.btop = {
