@@ -13,7 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./gfx.nix
-    ../../modules/nixos/desktop.nix
+    ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/common.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/fonts.nix
@@ -196,6 +196,8 @@
     wireguard-tools
     wget
   ];
+
+  custom.desktop.kde.enable = true;
 
   programs.dconf.enable = true;
 
