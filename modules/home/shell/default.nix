@@ -14,6 +14,7 @@
     dua
     erdtree
     nix-search-cli
+    nix-output-monitor
     hyperfine
   ];
 
