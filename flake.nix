@@ -110,5 +110,15 @@
             ];
           };
         };
+
+      nixosConfigurations.pi = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        system = "aarch64-linux";
+        modules = [
+          inputs.nixos-hardware.nixosModules.raspberry-pi-4
+          home-manager.nixosModules.default
+          ./hosts/pi/configuration.nix
+        ];
+      };
     };
 }
