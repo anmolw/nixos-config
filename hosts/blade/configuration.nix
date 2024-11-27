@@ -27,10 +27,8 @@
   # Nix settings
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["anmol"];
-  nix.settings.substituters = ["http://192.168.29.120:5000"];
-  nix.settings.trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ="];
-  nix.settings.extra-substituters = ["https://ghostty.cachix.org"];
-  nix.settings.extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
+  nix.settings.extra-substituters = ["http://192.168.29.120:5000" "https://ghostty.cachix.org" "https://nix-community.cachix.org"];
+  nix.settings.extra-trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ=" "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
   nix.extraOptions = ''
     builders-use-substitutes = true
   '';
