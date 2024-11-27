@@ -21,6 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    nixos-raspberrypi = "github:nvmd/nixos-raspberrypi/main";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -120,6 +121,18 @@
               ./hosts/vega/configuration.nix
             ];
           };
+
+          pi = nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs; };
+            system = "aarch64-linux";
+            modules = [
+              inputs.nixos-hardware.nixosModules.raspberry-pi-4
+              home-manager.nixosModules.default
+              ./hosts/pi/configuration.nix
+            ];
+          };
+
         };
+
     };
 }
