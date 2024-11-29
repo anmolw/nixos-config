@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     alejandra
+    devenv
+    lazyjj
     nil
     nixd
     tea
@@ -30,6 +32,8 @@
       init.defaultBranch = "main";
     };
   };
+
+  programs.jujutsu.enable = true;
 
   home.shellAliases = {
     gs = "git status";
