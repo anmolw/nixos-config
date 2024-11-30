@@ -26,12 +26,8 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    8096 # jellyfin
   ];
 
   networking.firewall.allowedUDPPorts = [
-    # jellyfin
-    1900
-    7359
   ];
 }
