@@ -1,9 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   networking.hostName = "relic"; # Define your hostname.
   networking.interfaces.eno1.ipv4.addresses = [
     {
@@ -39,7 +34,4 @@
     1900
     7359
   ];
-
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 }
