@@ -88,11 +88,12 @@ in {
   programs.mise = {
     globalConfig = {
       tools = {
-        usage = "latest";
+        deno = "latest";
         node = "lts";
-        python = "3.12";
-        yarn = "latest";
         pnpm = "latest";
+        python = "3.12";
+        usage = "latest";
+        yarn = "latest";
       };
     };
   };
