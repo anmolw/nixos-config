@@ -82,5 +82,9 @@
     };
   };
 
-  programs.yazi.enable = true;
+  programs.yazi = {
+    enable = true;
+    catppuccin.enable = true;
+    catppuccin.flavor = "mocha";
+  };
 }
