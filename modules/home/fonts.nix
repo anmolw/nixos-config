@@ -3,8 +3,12 @@
   home.packages = with pkgs; [
     fira-code
     jetbrains-mono
+    meslo-lg
     monaspace
     maple-mono
-    (nerdfonts.override {fonts = ["Hack" "Meslo" "FiraCode" "JetBrainsMono" "Monaspace"];})
+    nerd-fonts.fira-code
+    nerd-fonts.meslo-lg
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.monaspace
   ];
 }
