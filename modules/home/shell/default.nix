@@ -20,6 +20,8 @@
 
   programs.btop = {
     enable = true;
+    catppuccin.enable = true;
+    catppuccin.flavor = "mocha";
     settings.proc_gradient = false;
   };
 
@@ -44,7 +46,12 @@
     catppuccin.flavor = "mocha";
   };
 
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    catppuccin.enable = true;
+    catppuccin.flavor = "mocha";
+  };
+
   programs.ripgrep.enable = true;
   programs.zoxide.enable = true;
   programs.fd.enable = true;
