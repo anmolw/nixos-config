@@ -32,5 +32,15 @@
         };
       }
     ];
+    shellAbbrs = {
+      man = "batman";
+      g = "git";
+      ga = "git add";
+      gco = "git checkout";
+      gd = "git diff";
+      gds = "git diff --staged";
+      gl = "git log";
+      gs = "git status";
+    };
   };
 }

@@ -39,12 +39,6 @@
 
   programs.jujutsu.enable = true;
 
-  home.shellAliases = {
-    gs = "git status";
-    gl = "git log";
-    ga = "git add";
-  };
-
   programs.git.diff-so-fancy.enable = true;
 
   programs.direnv = {
