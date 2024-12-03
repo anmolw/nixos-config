@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     shellInit = ''
@@ -16,7 +11,7 @@
       }
       {
         name = "autopairs";
-        src = pkgs.fishPlugins.autopair;
+        src = pkgs.fishPlugins.autopair.src;
       }
       {
         name = "done";
