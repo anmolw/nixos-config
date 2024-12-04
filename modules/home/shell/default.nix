@@ -13,6 +13,10 @@
     hyperfine
   ];
 
+  home.shellAliases = {
+    man = "batman";
+  };
+
   programs.btop = {
     enable = true;
     catppuccin.enable = true;

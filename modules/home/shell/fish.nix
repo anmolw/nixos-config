@@ -28,7 +28,6 @@
       }
     ];
     shellAbbrs = {
-      man = "batman";
       g = "git";
       ga = "git add";
       gco = "git checkout";
