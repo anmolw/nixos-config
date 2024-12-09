@@ -14,10 +14,11 @@
     ./hardware-configuration.nix
     ./gfx.nix
     ./network.nix
-    ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/common.nix
-    ../../modules/nixos/steam.nix
+    ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/nixsettings.nix
+    ../../modules/nixos/steam.nix
   ];
 
   # Secrets setup
@@ -26,15 +27,12 @@
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
   # Nix settings
-  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["anmol"];
-  nix.settings.extra-substituters = ["http://192.168.29.120:5000" "https://ghostty.cachix.org" "https://nix-community.cachix.org"];
-  nix.settings.extra-trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ=" "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+  nix.settings.extra-substituters = ["http://192.168.29.120:5000" "https://ghostty.cachix.org"];
+  nix.settings.extra-trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ=" "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
   nix.extraOptions = ''
     builders-use-substitutes = true
   '';
-  nixpkgs.config.allowUnfree = true;
-  nix.optimise.automatic = true;
 
   # Home-manager
   home-manager = {
@@ -190,8 +188,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
 
   services.fwupd.enable = true;
 
