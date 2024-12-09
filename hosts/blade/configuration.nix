@@ -13,6 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./gfx.nix
+    ./network.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/common.nix
     ../../modules/nixos/steam.nix
@@ -78,38 +79,8 @@
   systemd.targets."tpm".enable = false;
   systemd.targets."tpm2".enable = false;
 
-  networking.hostName = "blade"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.networkmanager.dns = "systemd-resolved";
-
-  services.resolved = {
-    enable = true;
-    dnsovertls = "opportunistic";
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-      "9.9.9.9#dns.quad9.net"
-    ];
-    domains = ["~."];
-    dnssec = "true";
-  };
-
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (subject.isInGroup("users") && action.id === "org.freedesktop.NetworkManager.settings.modify.system") {
-        return polkit.Result.YES;
-      }
-    });
-  '';
-
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -126,12 +97,9 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
   # rtkit is optional but recommended
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     extraConfig.pipewire = {
@@ -231,23 +199,6 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
   services.openssh.openFirewall = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    57621 # spotify
-  ];
-
-  networking.firewall.allowedUDPPorts = [
-    5353 # spotify
-  ];
-
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
