@@ -71,7 +71,8 @@
     "zswap.enabled=1"
     "zswap.compressor=lz4"
   ];
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   systemd.units."dev-tpmrm0.device".enable = false;
   systemd.targets."tpm".enable = false;

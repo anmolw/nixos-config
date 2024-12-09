@@ -59,14 +59,6 @@
   # Kernel setup
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Media disk
-  fileSystems = {
-    "/srv/media" = {
-      device = "/dev/disk/by-uuid/7460472b-a42e-4804-975b-ace6fd36a01f";
-      fsType = "ext4";
-    };
-  };
-
   # Binary cache for other machines
   services.nix-serve = {
     enable = true;
