@@ -21,29 +21,38 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = ["-f"]; # Override existing partition
+                extraArgs = [ "-f" ]; # Override existing partition
                 # Subvolumes must set a mountpoint in order to be mounted,
                 # unless their parent is mounted
                 subvolumes = {
                   "/@root" = {
-                    mountOptions = ["compress=zstd:2"];
+                    mountOptions = [ "compress=zstd:2" ];
                     mountpoint = "/";
                   };
                   "/@home" = {
-                    mountOptions = ["compress=zstd:2"];
+                    mountOptions = [ "compress=zstd:2" ];
                     mountpoint = "/home";
                   };
                   "/@var" = {
-                    mountOptions = ["compress=zstd:2" "noatime"];
+                    mountOptions = [
+                      "compress=zstd:2"
+                      "noatime"
+                    ];
                     mountpoint = "/var";
                   };
                   "/@tmp" = {
-                    mountOptions = ["compress=zstd:2" "noatime"];
+                    mountOptions = [
+                      "compress=zstd:2"
+                      "noatime"
+                    ];
                     mountpoint = "/tmp";
                   };
                   # Parent is not mounted so the mountpoint must be set
                   "/@nix" = {
-                    mountOptions = ["compress=zstd:2" "noatime"];
+                    mountOptions = [
+                      "compress=zstd:2"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
                   };
                   # Subvolume for the swapfile

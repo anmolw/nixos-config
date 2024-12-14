@@ -8,7 +8,8 @@
   inputs,
   stablePkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -27,16 +28,22 @@
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
   # Nix settings
-  nix.settings.trusted-users = ["anmol"];
-  nix.settings.extra-substituters = ["http://192.168.29.120:5000" "https://ghostty.cachix.org"];
-  nix.settings.extra-trusted-public-keys = ["relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ=" "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
+  nix.settings.trusted-users = [ "anmol" ];
+  nix.settings.extra-substituters = [
+    "http://192.168.29.120:5000"
+    "https://ghostty.cachix.org"
+  ];
+  nix.settings.extra-trusted-public-keys = [
+    "relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ="
+    "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+  ];
   nix.extraOptions = ''
     builders-use-substitutes = true
   '';
 
   # Home-manager
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
     sharedModules = [
@@ -51,8 +58,8 @@
         defaultSopsFormat = "yaml";
         age.keyFile = /home/anmol/.config/sops/age/keys.txt;
         secrets = {
-          "ssh-keys/blade" = {};
-          "ssh-keys/blade-github" = {};
+          "ssh-keys/blade" = { };
+          "ssh-keys/blade-github" = { };
         };
       };
       imports = [
@@ -104,7 +111,10 @@
     extraConfig.pipewire = {
       "10-allowed-rates" = {
         "context.properties" = {
-          "default.clock.allowed-rates" = [44100 48000];
+          "default.clock.allowed-rates" = [
+            44100
+            48000
+          ];
         };
       };
     };
@@ -127,8 +137,10 @@
     home = "/home/anmol";
     createHome = true;
     shell = pkgs.zsh;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop"];
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop"
+    ];
     packages = with pkgs; [
       firefox
       mpv
@@ -166,7 +178,10 @@
   programs.dconf.enable = true;
 
   programs.zsh.enable = true;
-  environment.pathsToLink = ["/share/zsh" "/share/fish"];
+  environment.pathsToLink = [
+    "/share/zsh"
+    "/share/fish"
+  ];
 
   programs.nh = {
     enable = true;

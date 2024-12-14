@@ -13,7 +13,7 @@
       "1.0.0.1#one.one.one.one"
       "9.9.9.9#dns.quad9.net"
     ];
-    domains = ["~."];
+    domains = [ "~." ];
     dnssec = "true";
   };
 

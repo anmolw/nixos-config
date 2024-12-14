@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
@@ -12,5 +13,5 @@
     podman-tui
   ];
 
-  systemd.services.podman-restart.wantedBy = ["multi-user.target"];
+  systemd.services.podman-restart.wantedBy = [ "multi-user.target" ];
 }

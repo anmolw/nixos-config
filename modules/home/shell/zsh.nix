@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.programs.zsh;
-in {
+in
+{
   options.programs.zsh.p10k.enable = lib.mkEnableOption "Enable powerlevel10k";
 
   config.programs.zsh = lib.mkMerge [

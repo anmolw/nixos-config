@@ -6,7 +6,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -25,14 +26,14 @@
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
 
-  sops.secrets."nix-serve-priv-key" = {};
+  sops.secrets."nix-serve-priv-key" = { };
 
   # Nix settings
-  nix.settings.trusted-users = ["anmol"];
+  nix.settings.trusted-users = [ "anmol" ];
 
   # Home-manager
   home-manager = {
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
     sharedModules = [
@@ -67,7 +68,7 @@
   };
 
   services.tailscale.enable = true;
-  services.tailscale.extraUpFlags = ["--stateful-filtering=false"];
+  services.tailscale.extraUpFlags = [ "--stateful-filtering=false" ];
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -91,8 +92,15 @@
     createHome = true;
     shell = pkgs.zsh;
     linger = true;
-    extraGroups = ["wheel" "docker" "media"]; # Enable sudo and docker usage
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop" "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"];
+    extraGroups = [
+      "wheel"
+      "docker"
+      "media"
+    ]; # Enable sudo and docker usage
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEFb4CAY8laV5JmSD/AMgIZWBvF1uM8nLVFgzUu+JdP anmol@desktop"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP5QyKja6UgJW2DrXEFgbtgNZoJlinEvTVpcZy6EfnbK anmol@blade"
+    ];
   };
 
   # No initial root password for the purpose of setting up the system unattended
@@ -118,7 +126,7 @@
   ];
 
   programs.zsh.enable = true;
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   programs.nh = {
     enable = true;

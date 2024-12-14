@@ -3,9 +3,11 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.custom.desktop.kde;
-in {
+in
+{
   options.custom.desktop.kde.enable = lib.mkEnableOption "Enable KDE Desktop environment";
 
   config = lib.mkIf cfg.enable {
