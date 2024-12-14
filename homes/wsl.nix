@@ -119,7 +119,7 @@ in {
   ];
 
   home.sessionVariables = {
-    EDITOR = "micro";
+    EDITOR = "nvim";
     FLAKE = "/home/anmol/code/nixos-config";
     PNPM_HOME = "$HOME/.local/share/pnpm";
   };
