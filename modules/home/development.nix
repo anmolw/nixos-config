@@ -1,6 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     alejandra
+    treefmt
+    nixfmt-rfc-style
     devenv
     lazyjj
     nil

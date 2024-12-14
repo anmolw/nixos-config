@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ../modules/home/shell
     ../modules/home/development.nix
@@ -59,7 +60,10 @@
       };
       shell = {
         program = "tmux";
-        args = ["new" "-As0"];
+        args = [
+          "new"
+          "-As0"
+        ];
       };
     };
   };

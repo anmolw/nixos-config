@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./fish.nix
     ./tmux.nix
@@ -40,7 +41,7 @@
 
   programs.bat = {
     enable = true;
-    extraPackages = with pkgs.bat-extras; [batman];
+    extraPackages = with pkgs.bat-extras; [ batman ];
     catppuccin.enable = true;
     catppuccin.flavor = "mocha";
   };

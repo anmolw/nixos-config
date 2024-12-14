@@ -2,12 +2,14 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   wsl2-ssh-agent = pkgs.fetchurl {
     url = "https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.5/wsl2-ssh-agent";
     hash = "sha256-xdJcVmjEEJnvVKE6wZA447R97IuV6VFcOUxLByweKq4=";
   };
-in {
+in
+{
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
     inputs.sops-nix.homeManagerModules.sops

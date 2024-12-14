@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [ksmbd-tools];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ ksmbd-tools ];
 
   environment.etc."ksmbd/ksmbd.conf" = {
     mode = "0640";
@@ -23,7 +24,7 @@
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [445];
-  systemd.packages = with pkgs; [ksmbd-tools];
-  systemd.services.ksmbd.wantedBy = ["multi-user.target"];
+  networking.firewall.allowedTCPPorts = [ 445 ];
+  systemd.packages = with pkgs; [ ksmbd-tools ];
+  systemd.services.ksmbd.wantedBy = [ "multi-user.target" ];
 }

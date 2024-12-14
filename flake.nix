@@ -36,56 +36,62 @@
     catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-stable,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-  in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-
-    # WSL Home manager configuration
-    homeConfigurations."anmol@desktop" = let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
     in
-      home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          ./homes/wsl.nix
-        ];
-      };
+    {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-    nixosConfigurations.blade = let
-      stablePkgs = import nixpkgs-stable {inherit system;};
-    in
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs stablePkgs;};
-        modules = [
-          inputs.sops-nix.nixosModules.default
-          home-manager.nixosModules.default
-          inputs.chaotic.nixosModules.default
-          inputs.catppuccin.nixosModules.catppuccin
-          ./hosts/blade/configuration.nix
-        ];
-      };
+      # WSL Home manager configuration
+      homeConfigurations."anmol@desktop" =
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./homes/wsl.nix
+          ];
+        };
 
-    nixosConfigurations.relic = let
-      stablePkgs = import nixpkgs-stable {inherit system;};
-    in
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs stablePkgs;};
-        modules = [
-          inputs.sops-nix.nixosModules.default
-          inputs.disko.nixosModules.disko
-          home-manager.nixosModules.default
-          ./hosts/relic/configuration.nix
-        ];
-      };
-  };
+      nixosConfigurations.blade =
+        let
+          stablePkgs = import nixpkgs-stable { inherit system; };
+        in
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs stablePkgs; };
+          modules = [
+            inputs.sops-nix.nixosModules.default
+            home-manager.nixosModules.default
+            inputs.chaotic.nixosModules.default
+            inputs.catppuccin.nixosModules.catppuccin
+            ./hosts/blade/configuration.nix
+          ];
+        };
+
+      nixosConfigurations.relic =
+        let
+          stablePkgs = import nixpkgs-stable { inherit system; };
+        in
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs stablePkgs; };
+          modules = [
+            inputs.sops-nix.nixosModules.default
+            inputs.disko.nixosModules.disko
+            home-manager.nixosModules.default
+            ./hosts/relic/configuration.nix
+          ];
+        };
+    };
 }
