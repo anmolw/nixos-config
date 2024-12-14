@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../modules/home/shell
     ../modules/home/development.nix
@@ -14,11 +18,11 @@
   home.packages = with pkgs; [
     btdu
     fastfetch
-    ktailctl
-    obsidian
+    inputs.ghostty.packages.x86_64-linux.default
     jellyfin-media-player
+    ktailctl
     moonlight-qt
-    python3
+    obsidian
     syncthingtray-minimal
   ];
 
