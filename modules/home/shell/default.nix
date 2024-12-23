@@ -20,9 +20,12 @@
 
   programs.btop = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
     settings.proc_gradient = false;
+  };
+
+  catppuccin.btop = {
+    enable = true;
+    flavor = "mocha";
   };
 
   programs.atuin = {
@@ -42,14 +45,18 @@
   programs.bat = {
     enable = true;
     extraPackages = with pkgs.bat-extras; [ batman ];
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
   };
 
-  programs.fzf = {
+  catppuccin.bat = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
+    flavor = "mocha";
+  };
+
+  programs.fzf.enable = true;
+
+  catppuccin.fzf = {
+    enable = true;
+    flavor = "mocha";
   };
 
   programs.ripgrep.enable = true;
@@ -82,9 +89,11 @@
     };
   };
 
-  programs.yazi = {
+  programs.yazi.enable = true;
+
+  catppuccin.yazi = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
+    flavor = "mocha";
   };
+
 }

@@ -11,10 +11,11 @@
     tea
   ];
 
-  programs.lazygit = {
+  programs.lazygit.enable = true;
+
+  catppuccin.lazygit = {
     enable = true;
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
+    flavor = "mocha";
   };
 
   programs.mise = {
