@@ -19,7 +19,7 @@
   home.packages = with pkgs; [
     btdu
     fastfetch
-    inputs.ghostty.packages.x86_64-linux.default
+    ghostty
     jellyfin-media-player
     ktailctl
     moonlight-qt
