@@ -1,11 +1,13 @@
 keys:
-  - &relic age14tzswdyj8q86c372h73gvesyltc3y7ahg407d5nazzqe5d9pa4zqeea9eg
+  - &main age1fnjxdf7xgd8aczqxff6xn6wyfpa8dh3t3cxwk7e842rggz4nnges0nzdzk
+  - &relic age1x0ugl5d0z2r5939wxszq3mgcadgrsqhcj2rglk8yhyh5jm7mevls9jhul8
   - &blade age1qr688mvvslvwkx8muctgwlz0r5zfvja3s685ja8vm8m538z7dqfqpu3x6q
   - &wsl age1zpq0hfwmqny39jlvghltevvx6xddyn7hkmwzgfr6vhxakqgq8d0su4v2l3
 creation_rules:
   - path_regex: secrets/relic.yaml$
     key_groups:
       - age:
+        - *main
         - *relic
   - path_regex: secrets/blade.yaml$
     key_groups:

@@ -1,3 +1,2 @@
 .vscode
-secrets/*.yaml
 .devenv

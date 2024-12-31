@@ -22,11 +22,12 @@
   ];
 
   # Secrets setup
-  sops.defaultSopsFile = ../../secrets/relic.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
-
-  sops.secrets."nix-serve-priv-key" = { };
+  sops = {
+    defaultSopsFile = ../../secrets/relic.yaml;
+    defaultSopsFormat = "yaml";
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    secrets."nix-serve-priv-key" = { };
+  };
 
   # Nix settings
   nix.settings.trusted-users = [ "anmol" ];
@@ -41,12 +42,6 @@
       inputs.sops-nix.homeManagerModules.sops
       inputs.nix-index-database.hmModules.nix-index
     ];
-    # HM Secrets setup
-    users.anmol.sops = {
-      defaultSopsFile = ../../secrets/relic.yaml;
-      defaultSopsFormat = "yaml";
-      age.keyFile = /home/anmol/.config/sops/age/keys.txt;
-    };
 
     users.anmol.imports = [
       ../../homes/relic.nix
