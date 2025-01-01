@@ -26,6 +26,7 @@ in
 
     environment.systemPackages = with pkgs; [
       kdePackages.sddm-kcm
+      wl-clipboard
     ];
   };
 }

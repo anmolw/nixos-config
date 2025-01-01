@@ -46,7 +46,7 @@
   xdg.configFile."ghostty/config".text = ''
     command = fish
 
-    font-family = Fira Code
+    font-family = JetBrains Mono
     font-size = 12
     font-feature = -calt
     font-feature = -dlig
@@ -65,7 +65,7 @@
     enable = true;
     settings = {
       font.normal = {
-        family = "FiraCode Nerd Font Mono";
+        family = "JetBrainsMono Nerd Font";
         style = "Regular";
       };
       shell = {
@@ -82,7 +82,7 @@
     enable = true;
     themeFile = "Catppuccin-Mocha";
     font = {
-      name = "Fira Code";
+      name = "JetBrains Mono";
       size = 12;
     };
     settings = {
