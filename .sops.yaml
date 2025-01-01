@@ -11,4 +11,5 @@ creation_rules:
   - path_regex: secrets/blade.yaml$
     key_groups:
       - age:
+        - *main
         - *blade
