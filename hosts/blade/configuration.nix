@@ -25,7 +25,7 @@
   # Secrets setup
   sops.defaultSopsFile = ../../secrets/blade.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = /home/anmol/.config/sops/age/keys.txt;
+  sops.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   # Nix settings
   nix.settings.trusted-users = [ "anmol" ];
@@ -52,16 +52,6 @@
       inputs.nix-index-database.hmModules.nix-index
     ];
     users.anmol = {
-      # HM Secrets setup
-      sops = {
-        defaultSopsFile = ../../secrets/blade.yaml;
-        defaultSopsFormat = "yaml";
-        age.keyFile = /home/anmol/.config/sops/age/keys.txt;
-        secrets = {
-          "ssh-keys/blade" = { };
-          "ssh-keys/blade-github" = { };
-        };
-      };
       imports = [
         ../../homes/blade.nix
       ];

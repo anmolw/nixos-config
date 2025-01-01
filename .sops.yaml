@@ -2,7 +2,13 @@ keys:
   - &main age1fnjxdf7xgd8aczqxff6xn6wyfpa8dh3t3cxwk7e842rggz4nnges0nzdzk
   - &relic age1x0ugl5d0z2r5939wxszq3mgcadgrsqhcj2rglk8yhyh5jm7mevls9jhul8
   - &blade age1qr688mvvslvwkx8muctgwlz0r5zfvja3s685ja8vm8m538z7dqfqpu3x6q
+  - &hm age1sg5zxlwxha7expa7w3ehfq4y20qzv0sasu6mvdjqd469ym7csgnqctrfpn
 creation_rules:
+  - path_regex: secrets/hm.yaml$
+    key_groups:
+      - age:
+        - *main
+        - *hm
   - path_regex: secrets/relic.yaml$
     key_groups:
       - age:

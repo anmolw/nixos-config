@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -15,6 +14,17 @@
   ];
 
   home.stateVersion = "24.05";
+
+  # HM Secrets setup
+  sops = {
+    defaultSopsFile = ../secrets/hm.yaml;
+    defaultSopsFormat = "yaml";
+    age.keyFile = "/home/anmol/.config/sops/age/keys.txt";
+    secrets = {
+      "hass-token" = { };
+      "hass-url" = { };
+    };
+  };
 
   home.packages = with pkgs; [
     btdu
