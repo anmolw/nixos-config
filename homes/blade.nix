@@ -21,8 +21,8 @@
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/anmol/.config/sops/age/keys.txt";
     secrets = {
-      "hass-token" = { };
-      "hass-url" = { };
+      "env/hass-token" = { };
+      "env/hass-url" = { };
     };
   };
 
