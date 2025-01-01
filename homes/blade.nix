@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -25,6 +26,16 @@
       "env/hass-url" = { };
     };
   };
+
+  programs.fish.shellInit = ''
+    set -gx HASS_TOKEN (cat ${config.sops.secrets."env/hass-token".path})
+    set -gx HASS_URL (cat ${config.sops.secrets."env/hass-token".path})
+  '';
+
+  programs.zsh.initExtra = ''
+    export HASS_TOKEN="$(cat ${config.sops.secrets."env/hass-token".path})"
+    export HASS_URL="$(cat ${config.sops.secrets."env/hass-token".path}))"
+  '';
 
   home.packages = with pkgs; [
     btdu

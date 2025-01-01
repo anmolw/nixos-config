@@ -25,7 +25,7 @@
   # Secrets setup
   sops.defaultSopsFile = ../../secrets/blade.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   # Nix settings
   nix.settings.trusted-users = [ "anmol" ];

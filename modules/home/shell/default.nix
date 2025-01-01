@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     dua
+    shpool
     erdtree
     nix-search-cli
     nix-output-monitor
