@@ -40,7 +40,6 @@
   home.packages = with pkgs; [
     btdu
     fastfetch
-    ghostty
     jellyfin-media-player
     ktailctl
     moonlight-qt
@@ -54,23 +53,31 @@
     enable = true;
   };
 
-  xdg.configFile."ghostty/config".text = ''
-    command = fish
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      command = "fish";
 
-    font-family = JetBrains Mono
-    font-size = 12
-    font-feature = -calt
-    font-feature = -dlig
-    font-feature = -liga
+      theme = "catppuccin-mocha";
+      window-theme = "ghostty";
 
-    shell-integration-features = no-cursor,sudo
+      font-family = "JetBrains Mono";
+      font-size = 12;
+      font-feature = [
+        "-calt"
+        "-dlig"
+        "-liga"
+      ];
+      adjust-underline-position = -1;
+      freetype-load-flags = "no-force-autohint";
 
-    cursor-style = block
-    cursor-style-blink = false
+      cursor-style = "block";
+      cursor-style-blink = "false";
 
-    theme = catppuccin-mocha
-    window-theme = ghostty
-  '';
+      gtk-single-instance = true;
+      shell-integration-features = "no-cursor,sudo";
+    };
+  };
 
   programs.alacritty = {
     enable = true;
