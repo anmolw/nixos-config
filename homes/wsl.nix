@@ -38,11 +38,13 @@ in
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
-    mdcat
     glow
     gum
+    mdcat
     mods
+    mosh
     nh
+    nixos-rebuild
     pixi
     sops
     uv
@@ -120,7 +122,7 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FLAKE = "/home/anmol/code/nixos-config";
+    FLAKE = "/home/anmol/code/github/nixos-config";
     PNPM_HOME = "$HOME/.local/share/pnpm";
   };
 
