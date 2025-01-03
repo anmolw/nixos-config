@@ -36,6 +36,15 @@
 
   programs.git = {
     enable = true;
+    aliases = {
+      unstage = "restore --staged";
+    };
+    includes = [
+      {
+        path = "~/.config/git/config-github";
+        condition = "gitdir:~/code/github/";
+      }
+    ];
     extraConfig = {
       init.defaultBranch = "main";
     };
