@@ -48,6 +48,24 @@
       system = "x86_64-linux";
     in
     {
+      packages.${system}.arch-profile =
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        pkgs.buildEnv {
+          name = "arch-profile";
+          paths = with pkgs; [
+            nixos-rebuild
+            devenv
+            nix-output-monitor
+            nix-search-cli
+            treefmt
+            nixos-rebuild-ng
+            nixd
+            alejandra
+            nixfmt-rfc-style
+          ];
+        };
 
       # WSL Home manager configuration
       homeConfigurations."anmol@desktop" =
