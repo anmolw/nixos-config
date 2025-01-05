@@ -5,7 +5,7 @@
     treefmt
     nixfmt-rfc-style
     devenv
-    lazyjj
+    # lazyjj
     nil
     nixd
     tea
