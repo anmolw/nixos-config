@@ -5,6 +5,7 @@
     treefmt
     nixfmt-rfc-style
     devenv
+    poop
     # lazyjj
     nil
     nixd
