@@ -124,7 +124,7 @@
     isNormalUser = true;
     home = "/home/anmol";
     createHome = true;
-    shell = pkgs.zsh;
+    shell = config.programs.fish.package;
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -169,10 +169,7 @@
   programs.dconf.enable = true;
 
   programs.zsh.enable = true;
-  environment.pathsToLink = [
-    "/share/zsh"
-    "/share/fish"
-  ];
+  programs.fish.enable = true;
 
   programs.nh = {
     enable = true;

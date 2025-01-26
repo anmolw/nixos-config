@@ -83,7 +83,7 @@
     home = "/home/anmol";
     uid = 1000;
     createHome = true;
-    shell = pkgs.zsh;
+    shell = config.programs.fish.package;
     linger = true;
     extraGroups = [
       "wheel"
@@ -121,7 +121,7 @@
   ];
 
   programs.zsh.enable = true;
-  environment.pathsToLink = [ "/share/zsh" ];
+  programs.fish.enable = true;
 
   programs.nh = {
     enable = true;
