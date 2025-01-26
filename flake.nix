@@ -83,17 +83,33 @@
         let
           system = "x86_64-linux";
           stablePkgs = nixpkgs-stable.legacyPackages.${system};
+          customLib = nixpkgs.lib.extend (
+            final: prev:
+            import ./lib {
+              inherit inputs;
+              lib = final;
+            }
+          );
         in
         {
           blade = nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit inputs stablePkgs; };
+            specialArgs = {
+              inherit inputs stablePkgs;
+              lib = customLib;
+            };
             modules = [
               inputs.sops-nix.nixosModules.default
               home-manager.nixosModules.default
               inputs.chaotic.nixosModules.default
               inputs.catppuccin.nixosModules.catppuccin
               ./hosts/blade/configuration.nix
+              (
+                { lib, ... }:
+                {
+                  users.users.foobar = lib.foo;
+                }
+              )
             ];
           };
 
@@ -116,6 +132,11 @@
               inputs.disko.nixosModules.disko
               ./hosts/vega/configuration.nix
             ];
+          };
+
+          libtest = customLib.mkNixos {
+            hostname = "testing";
+            mainUser = "anmol";
           };
         };
     };
