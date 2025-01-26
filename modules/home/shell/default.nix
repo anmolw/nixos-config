@@ -16,6 +16,10 @@
     hyperfine
   ];
 
+  home.sessionVariables = {
+    PAGER = "bat --plain";
+  };
+
   home.shellAliases = {
     man = "batman";
   };
