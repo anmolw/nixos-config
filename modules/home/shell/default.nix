@@ -12,6 +12,7 @@
     erdtree
     nix-search-cli
     nix-output-monitor
+    nvd
     hyperfine
   ];
 
