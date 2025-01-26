@@ -175,7 +175,7 @@
 
   programs.nh = {
     enable = true;
-    flake = "/home/anmol/Code/nixos-config";
+    flake = "/home/anmol/code/github/nixos-config";
   };
 
   programs.firefox = {
