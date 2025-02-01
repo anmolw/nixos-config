@@ -72,6 +72,14 @@ in
     eval $($HOME/.local/bin/wsl2-ssh-agent)
   '';
 
+  programs.zsh.envExtra = ''
+    # Source the nix daemon script only if the parent process is sshd and the
+    # shell is non-interactive
+    if [[ ! -o interactive && $(ps -p $PPID --format=comm --no-header) == "sshd" ]]; then
+      source /etc/profile.d/nix.sh
+    fi
+  '';
+
   programs.zsh.p10k.enable = true;
 
   programs.fish.shellInit = ''
