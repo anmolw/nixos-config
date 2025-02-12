@@ -14,8 +14,7 @@
       # set -ga update-environment TERM_PROGRAM
     '';
     plugins = [
-      # TODO: Re-enable when build failure is resolved
-      # pkgs.tmuxPlugins.resurrect
+      pkgs.tmuxPlugins.resurrect
       pkgs.tmuxPlugins.tmux-fzf
       {
         plugin = pkgs.tmuxPlugins.tmux-thumbs;
