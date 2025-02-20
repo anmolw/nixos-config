@@ -111,6 +111,10 @@ in
     };
   };
 
+  # With wslu installed, `done` causes a very annoying pause after entering
+  # each command. Disable this plugin on WSL.
+  programs.fish.disabledPlugins = [ "done" ];
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
