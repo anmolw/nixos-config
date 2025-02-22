@@ -8,6 +8,7 @@
     poop
     # lazyjj
     nil
+    nix-melt
     nixd
     tea
   ];
