@@ -32,7 +32,7 @@ let
 in
 {
   options.programs.fish.disabledPlugins = lib.mkOption {
-    description = "List of plugins to disable.";
+    description = "List of plugins to disable. (Only affects the default set of plugins)";
     default = [ ];
   };
 
