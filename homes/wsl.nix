@@ -38,6 +38,8 @@ in
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
+    ansible
+    asciinema
     glow
     gum
     mdcat
@@ -47,12 +49,11 @@ in
     nixos-rebuild
     pixi
     sops
-    uv
-    wishlist
-    ansible
     terraform
     terraform-providers.digitalocean
     terraform-providers.docker
+    uv
+    wishlist
     wslu
     # It is sometimes useful to fine-tune packages, for example, by applying
     # overrides. You can do that directly here, just don't forget the
