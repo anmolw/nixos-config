@@ -1,9 +1,23 @@
 {
-  networking.hostName = "blade"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.networkmanager.dns = "systemd-resolved";
+  networking = {
+    hostName = "blade"; # Define your hostname.
+    # Pick only one of the below networking options.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    networkmanager.dns = "systemd-resolved";
+    # Open ports in the firewall.
+    firewall.allowedTCPPorts = [
+      57621 # spotify
+    ];
+    firewall.allowedUDPPorts = [
+      5353 # spotify
+    ];
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
 
   services.resolved = {
     enable = true;
@@ -24,13 +38,4 @@
       }
     });
   '';
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    57621 # spotify
-  ];
-
-  networking.firewall.allowedUDPPorts = [
-    5353 # spotify
-  ];
 }
