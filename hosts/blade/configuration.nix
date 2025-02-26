@@ -30,7 +30,7 @@
   # Nix settings
   nix.settings.trusted-users = [ "anmol" ];
   nix.settings.extra-substituters = [
-    "http://192.168.29.120:5000"
+    "http://relic:5000"
     "https://ghostty.cachix.org"
   ];
   nix.settings.extra-trusted-public-keys = [
