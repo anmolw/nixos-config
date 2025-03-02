@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.jujutsu = {
     enable = true;
@@ -26,6 +26,12 @@
           "status"
         ];
       };
+      signing = {
+        sign-all = true;
+        backend = "ssh";
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjKonstq1xifZcoYcPkaqZmD6hOLMRdzq7xfhFrPLm anmol@desktop";
+      };
+      git.sign-on-push = true;
       template-aliases = {
         "format_short_signature(signature)" = "    coalesce(signature.name(), name_placeholder)";
         "format_short_commit_header(commit)" = ''
