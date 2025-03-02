@@ -14,7 +14,7 @@ in
     inputs.catppuccin.homeManagerModules.catppuccin
     inputs.sops-nix.homeManagerModules.sops
     ../modules/home/shell
-    ../modules/home/development.nix
+    ../modules/home/development
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

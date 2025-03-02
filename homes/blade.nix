@@ -6,7 +6,7 @@
 {
   imports = [
     ../modules/home/shell
-    ../modules/home/development.nix
+    ../modules/home/development
     ../modules/home/ssh.nix
     ../modules/home/fonts.nix
     ../modules/home/vscode.nix
