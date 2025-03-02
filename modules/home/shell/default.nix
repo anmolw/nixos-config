@@ -17,7 +17,7 @@
   ];
 
   home.sessionVariables = {
-    PAGER = "bat --plain";
+    # PAGER = "bat --plain";
   };
 
   home.shellAliases = {
