@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./git.nix
+    ./jj.nix
+    ./delta.nix
+  ];
+
   home.packages = with pkgs; [
     alejandra
     devenv
@@ -37,26 +43,6 @@
       git_protocol = "ssh";
     };
   };
-
-  programs.git = {
-    enable = true;
-    aliases = {
-      unstage = "restore --staged";
-    };
-    includes = [
-      {
-        path = "~/.config/git/config-github";
-        condition = "gitdir:~/code/github/";
-      }
-    ];
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-  };
-
-  programs.jujutsu.enable = true;
-
-  programs.git.diff-so-fancy.enable = true;
 
   programs.direnv = {
     enable = true;
