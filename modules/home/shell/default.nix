@@ -7,13 +7,14 @@
   ];
 
   home.packages = with pkgs; [
+    dfrs
     dua
-    shpool
     erdtree
-    nix-search-cli
-    nix-output-monitor
-    nvd
     hyperfine
+    nix-output-monitor
+    nix-search-cli
+    nvd
+    shpool
   ];
 
   home.sessionVariables = {
