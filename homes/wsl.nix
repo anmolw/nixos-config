@@ -47,6 +47,7 @@ in
     mosh
     nh
     nixos-rebuild
+    nixos-rebuild-ng
     pixi
     sops
     terraform
