@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  #TODO: Set up commit signing
   programs.jujutsu = {
     enable = true;
     settings = {
