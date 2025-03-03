@@ -2,15 +2,17 @@
 {
   home.packages = with pkgs; [
     alejandra
-    treefmt
-    nixfmt-rfc-style
     devenv
-    poop
     # lazyjj
+    delta
+    diff-so-fancy
     nil
     nix-melt
     nixd
+    nixfmt-rfc-style
+    poop
     tea
+    treefmt
   ];
 
   programs.lazygit.enable = true;
