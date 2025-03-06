@@ -8,6 +8,7 @@
     ../modules/home/shell
     ../modules/home/development
     ../modules/home/ssh.nix
+    ../modules/home/gpg.nix
     ../modules/home/fonts.nix
     ../modules/home/vscode.nix
     ../modules/home/krisp.nix
