@@ -27,7 +27,8 @@
         ];
       };
       signing = {
-        sign-all = true;
+        #INFO: This needs to be set for jj v0.27 onwards to lazily sign commits
+        # behavior = "drop"
         backend = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjKonstq1xifZcoYcPkaqZmD6hOLMRdzq7xfhFrPLm anmol@desktop";
       };
