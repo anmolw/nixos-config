@@ -14,7 +14,7 @@
     ./disko-configuration.nix
     ./nfs.nix
     ./network.nix
-    ./ksmbd.nix
+    ./samba.nix
     ./jellyfin.nix
     ../../modules/nixos/common.nix
     ../../modules/nixos/nixsettings.nix
