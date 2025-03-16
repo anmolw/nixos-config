@@ -14,8 +14,9 @@
         ; share parameters
         comment = Media drive
         create mask = 0755
-        force group = media
-        force user = anmol
+        store dos attributes = no
+        force group = jellyfin
+        force user = jellyfin
         path = /srv/media
         read only = yes
         write list = anmol
