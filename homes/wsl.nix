@@ -51,9 +51,6 @@ in
     pixi
     sops
     terraform
-    terraform-providers.hcloud
-    terraform-providers.digitalocean
-    terraform-providers.docker
     uv
     wishlist
     wslu
