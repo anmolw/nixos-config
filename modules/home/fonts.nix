@@ -6,7 +6,7 @@
     jetbrains-mono
     meslo-lg
     monaspace
-    maple-mono
+    maple-mono.Normal-OTF
     ibm-plex
     nerd-fonts.fira-code
     nerd-fonts.meslo-lg
