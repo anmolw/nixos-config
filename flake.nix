@@ -40,70 +40,75 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
+      forAllSystems = with nixpkgs.lib; genAttrs systems.flakeExposed;
     in
     {
-      packages.${system}.arch-profile =
+      packages = forAllSystems (
+        system:
         let
           pkgs = import nixpkgs { inherit system; };
         in
-        pkgs.buildEnv {
-          name = "arch-profile";
-          paths = with pkgs; [
-            nixos-rebuild
-            devenv
-            nix-output-monitor
-            nix-search-cli
-            treefmt
-            nixos-rebuild-ng
-            nixd
-            alejandra
-            nixfmt-rfc-style
-          ];
-        };
-
-      # WSL Home manager configuration
-      homeConfigurations."anmol@desktop" =
-        let
-          pkgs = import nixpkgs {
-            inherit system;
+        {
+          arch-profile = pkgs.buildEnv {
+            name = "arch-profile";
+            paths = with pkgs; [
+              nixos-rebuild
+              devenv
+              nix-output-monitor
+              nix-search-cli
+              treefmt
+              nixos-rebuild-ng
+              nixd
+              alejandra
+              nixfmt-rfc-style
+            ];
           };
+        }
+      );
+
+      homeConfigurations =
+        let
+          system = "x86_64-linux";
+          pkgs = import nixpkgs { inherit system; };
         in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./homes/wsl.nix
-          ];
+        {
+          "anmol@desktop" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit inputs; };
+            modules = [
+              ./homes/wsl.nix
+            ];
+          };
         };
 
-      nixosConfigurations.blade =
+      nixosConfigurations =
         let
+          system = "x86_64-linux";
           stablePkgs = import nixpkgs-stable { inherit system; };
         in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs stablePkgs; };
-          modules = [
-            inputs.sops-nix.nixosModules.default
-            home-manager.nixosModules.default
-            inputs.chaotic.nixosModules.default
-            inputs.catppuccin.nixosModules.catppuccin
-            ./hosts/blade/configuration.nix
-          ];
-        };
+        {
+          blade = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs stablePkgs; };
+            modules = [
+              inputs.sops-nix.nixosModules.default
+              home-manager.nixosModules.default
+              inputs.chaotic.nixosModules.default
+              inputs.catppuccin.nixosModules.catppuccin
+              ./hosts/blade/configuration.nix
+            ];
+          };
 
-      nixosConfigurations.relic =
-        let
-          stablePkgs = import nixpkgs-stable { inherit system; };
-        in
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs stablePkgs; };
-          modules = [
-            inputs.sops-nix.nixosModules.default
-            inputs.disko.nixosModules.disko
-            home-manager.nixosModules.default
-            ./hosts/relic/configuration.nix
-          ];
+          relic = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs stablePkgs; };
+            modules = [
+              inputs.sops-nix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              home-manager.nixosModules.default
+              ./hosts/relic/configuration.nix
+            ];
+          };
         };
     };
 }
