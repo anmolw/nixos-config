@@ -28,6 +28,8 @@
     flavor = "mocha";
   };
 
+  programs.jqp.enable = true;
+
   programs.mise = {
     enable = true;
     globalConfig = {
