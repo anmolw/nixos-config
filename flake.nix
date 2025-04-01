@@ -46,7 +46,7 @@
       packages = forAllSystems (
         system:
         let
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = nixpkgs.legacyPackages.${system};
         in
         {
           arch-profile = pkgs.buildEnv {
@@ -69,7 +69,7 @@
       homeConfigurations =
         let
           system = "x86_64-linux";
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = nixpkgs.legacyPackages.${system};
         in
         {
           "anmol@desktop" = home-manager.lib.homeManagerConfiguration {
@@ -84,7 +84,7 @@
       nixosConfigurations =
         let
           system = "x86_64-linux";
-          stablePkgs = import nixpkgs-stable { inherit system; };
+          stablePkgs = nixpkgs-stable.legacyPackages.${system};
         in
         {
           blade = nixpkgs.lib.nixosSystem {
