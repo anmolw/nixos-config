@@ -39,6 +39,9 @@ in
   config = {
     programs.fish = {
       enable = true;
+      interactiveShellInit = ''
+        ${pkgs.nix-your-shell}/bin/nix-your-shell fish | source
+      '';
       shellInit = ''
         set fish_greeting
       '';
