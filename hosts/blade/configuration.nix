@@ -45,7 +45,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     sharedModules = [
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.catppuccin.homeModules.catppuccin
       inputs.sops-nix.homeManagerModules.sops
       inputs.nix-index-database.hmModules.nix-index
     ];
