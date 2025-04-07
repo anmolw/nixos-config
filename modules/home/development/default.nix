@@ -13,6 +13,7 @@
     # lazyjj
     delta
     diff-so-fancy
+    forgejo-cli
     nil
     nix-melt
     nixd
