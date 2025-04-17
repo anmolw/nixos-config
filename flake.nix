@@ -53,15 +53,16 @@
           arch-profile = pkgs.buildEnv {
             name = "arch-profile";
             paths = with pkgs; [
-              nixos-rebuild
+              alejandra
               devenv
+              nh
               nix-output-monitor
               nix-search-cli
-              treefmt
-              nixos-rebuild-ng
               nixd
-              alejandra
               nixfmt-rfc-style
+              nixos-rebuild
+              nixos-rebuild-ng
+              treefmt
             ];
           };
         }
