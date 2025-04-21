@@ -10,9 +10,9 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./disko-configuration.nix
-    ./network.nix
+    ./hardware-configuration.nix
+    ./networking.nix
     ./services
     ../../modules/nixos/common.nix
     ../../modules/nixos/nixsettings.nix

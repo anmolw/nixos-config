@@ -1,12 +1,11 @@
 {
   networking = {
     hostName = "relic";
-    useDHCP = false;
-    dhcpcd.enable = false;
     firewall.allowedTCPPorts = [ ];
     firewall.allowedUDPPorts = [
       5353 # mDNS
     ];
+    useNetworkd = true;
   };
 
   systemd.network = {

@@ -14,7 +14,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./gfx.nix
-    ./network.nix
+    ./networking.nix
     ../../modules/nixos/common.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/fonts.nix
