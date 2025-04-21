@@ -12,10 +12,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disko-configuration.nix
-    ./nfs.nix
     ./network.nix
-    ./samba.nix
-    ./jellyfin.nix
+    ./services
     ../../modules/nixos/common.nix
     ../../modules/nixos/nixsettings.nix
     ../../modules/nixos/podman.nix
