@@ -109,6 +109,15 @@
               ./hosts/relic/configuration.nix
             ];
           };
+
+          vega = nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              inputs.disko.nixosModules.disko
+              ./hosts/vega/configuration.nix
+            ];
+          };
         };
     };
 }
