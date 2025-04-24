@@ -73,7 +73,7 @@ in
     executable = true;
   };
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     eval $($HOME/.local/bin/wsl2-ssh-agent)
   '';
 
