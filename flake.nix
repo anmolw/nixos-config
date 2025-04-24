@@ -114,6 +114,7 @@
             system = "aarch64-linux";
             specialArgs = { inherit inputs; };
             modules = [
+              inputs.sops-nix.nixosModules.default
               inputs.disko.nixosModules.disko
               ./hosts/vega/configuration.nix
             ];

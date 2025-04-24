@@ -3,6 +3,7 @@ keys:
   - &relic age1x0ugl5d0z2r5939wxszq3mgcadgrsqhcj2rglk8yhyh5jm7mevls9jhul8
   - &blade age1ulf2vn6xz5gf6yc6axpctm5rptj8fnar5tcqrv5jh7udwg0ly9ps3kpexz
   - &hm age1sg5zxlwxha7expa7w3ehfq4y20qzv0sasu6mvdjqd469ym7csgnqctrfpn
+  - &vega age1ueh30uzq36mzekugpjagyfwh8dam6lew9nqzsvwt07jmyuxzt9fsnrg6lt
 creation_rules:
   - path_regex: secrets/hm.yaml$
     key_groups:
@@ -19,3 +20,8 @@ creation_rules:
       - age:
         - *main
         - *blade
+  - path_regex: secrets/vega.yaml$
+    key_groups:
+      - age:
+        - *main
+        - *vega
