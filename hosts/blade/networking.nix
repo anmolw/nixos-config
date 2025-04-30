@@ -25,12 +25,4 @@
       "9.9.9.9#dns.quad9.net"
     ];
   };
-
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (subject.isInGroup("users") && action.id === "org.freedesktop.NetworkManager.settings.modify.system") {
-        return polkit.Result.YES;
-      }
-    });
-  '';
 }
