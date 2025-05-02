@@ -139,7 +139,7 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    FLAKE = "/home/anmol/code/github/nixos-config";
+    NH_FLAKE = "/home/anmol/code/github/nixos-config";
     PNPM_HOME = "$HOME/.local/share/pnpm";
   };
 
