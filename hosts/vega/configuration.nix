@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./disko-configuration.nix
@@ -7,6 +12,8 @@
     ../../modules/nixos/nixsettings.nix
     ./services
   ];
+
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

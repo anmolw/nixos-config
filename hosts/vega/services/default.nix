@@ -2,6 +2,7 @@
   imports = [
     ./caddy.nix
     ./forgejo.nix
+    ./minecraft.nix
     ./ssh.nix
     ./tailscale.nix
   ];
