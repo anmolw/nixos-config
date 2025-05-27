@@ -48,9 +48,11 @@
 
   environment.systemPackages = with pkgs; [
     bat
-    fd
-    ripgrep
     btop
+    dua
+    fd
+    nix-search-cli
+    ripgrep
     vim
   ];
 
