@@ -12,6 +12,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages;
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
+
   sops = {
     defaultSopsFile = ../../secrets/vps.yaml;
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
