@@ -36,6 +36,9 @@
       tools = {
         usage = "latest";
       };
+      settings = {
+        idiomatic_version_file_enable_tools = [ ];
+      };
     };
   };
 
