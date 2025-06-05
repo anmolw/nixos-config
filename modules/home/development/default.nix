@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     alejandra
+    cloudflared
     devenv
     # lazyjj
     delta
