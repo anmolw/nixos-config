@@ -1,5 +1,25 @@
 { pkgs, ... }:
+let
+  catppuccinPrograms = [
+    "atuin"
+    "bat"
+    "fzf"
+    "btop"
+    "yazi"
+    "zellij"
+  ];
+in
 {
+  catppuccin = builtins.listToAttrs (
+    map (val: {
+      name = val;
+      value = {
+        enable = true;
+        flavor = "mocha";
+      };
+    }) catppuccinPrograms
+  );
+
   imports = [
     ./fish.nix
     ./tmux.nix
@@ -30,11 +50,6 @@
     settings.proc_gradient = false;
   };
 
-  catppuccin.btop = {
-    enable = true;
-    flavor = "mocha";
-  };
-
   programs.atuin = {
     enable = true;
   };
@@ -54,17 +69,7 @@
     extraPackages = with pkgs.bat-extras; [ batman ];
   };
 
-  catppuccin.bat = {
-    enable = true;
-    flavor = "mocha";
-  };
-
   programs.fzf.enable = true;
-
-  catppuccin.fzf = {
-    enable = true;
-    flavor = "mocha";
-  };
 
   programs.ripgrep.enable = true;
   programs.zoxide.enable = true;
@@ -94,16 +99,8 @@
     enableZshIntegration = false;
     enableFishIntegration = false;
     enableBashIntegration = false;
-    settings = {
-      theme = "catppuccin-mocha";
-    };
   };
 
   programs.yazi.enable = true;
-
-  catppuccin.yazi = {
-    enable = true;
-    flavor = "mocha";
-  };
 
 }
