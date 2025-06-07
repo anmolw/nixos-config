@@ -27,10 +27,9 @@
         ];
       };
       signing = {
-        #INFO: This needs to be set for jj v0.27 onwards to lazily sign commits
-        # behavior = "drop"
+        behavior = "drop";
         backend = "ssh";
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjKonstq1xifZcoYcPkaqZmD6hOLMRdzq7xfhFrPLm anmol@desktop";
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhjKonstq1xifZcoYcPkaqZmD6hOLMRdzq7xfhFrPLm";
       };
       git.sign-on-push = true;
       template-aliases = {
@@ -60,9 +59,7 @@
         pager = [
           "delta"
         ];
-        diff = {
-          format = "git";
-        };
+        diff-formatter = ":git";
       };
     };
   };
