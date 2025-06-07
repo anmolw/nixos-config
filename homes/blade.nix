@@ -30,12 +30,12 @@
 
   programs.fish.shellInit = ''
     set -gx HASS_TOKEN (cat ${config.sops.secrets."env/hass-token".path})
-    set -gx HASS_URL (cat ${config.sops.secrets."env/hass-token".path})
+    set -gx HASS_URL (cat ${config.sops.secrets."env/hass-url".path})
   '';
 
   programs.zsh.initContent = ''
     export HASS_TOKEN="$(cat ${config.sops.secrets."env/hass-token".path})"
-    export HASS_URL="$(cat ${config.sops.secrets."env/hass-token".path}))"
+    export HASS_URL="$(cat ${config.sops.secrets."env/hass-url".path}))"
   '';
 
   home.packages = with pkgs; [
