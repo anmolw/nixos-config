@@ -3,6 +3,7 @@
     ./caddy.nix
     ./forgejo.nix
     ./minecraft.nix
+    ./miniflux.nix
     ./ssh.nix
     ./tailscale.nix
   ];
