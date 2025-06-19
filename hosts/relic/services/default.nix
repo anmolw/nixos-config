@@ -1,5 +1,6 @@
 {
   imports = [
+    ./immich.nix
     ./jellyfin.nix
     ./nfs.nix
     ./nix-serve.nix
