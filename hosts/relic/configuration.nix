@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   config,
   pkgs,
@@ -9,7 +6,6 @@
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./disko-configuration.nix
     ./hardware-configuration.nix
     ./networking.nix
@@ -53,11 +49,7 @@
   # Kernel setup
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # Binary cache for other machines
-  services.nix-serve = {
     enable = true;
-    secretKeyFile = config.sops.secrets."nix-serve-priv-key".path;
-    openFirewall = true;
   };
 
   services.tailscale.enable = true;
@@ -157,5 +149,4 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
 }
