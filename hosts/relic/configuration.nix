@@ -46,10 +46,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Kernel setup
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Kernel version
+  boot.kernelPackages = pkgs.linuxPackages;
 
+  zramSwap = {
     enable = true;
+    memoryPercent = 50;
+    writebackDevice = "/dev/disk/by-partlabel/disk-nixos-swap";
   };
 
   services.tailscale.enable = true;
@@ -149,4 +152,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "25.11"; # Did you read the comment?
 }
