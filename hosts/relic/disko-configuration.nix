@@ -27,6 +27,9 @@
             swap = {
               size = "100%";
               type = "8200";
+              content = {
+                type = "swap";
+              };
             };
           };
         };

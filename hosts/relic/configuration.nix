@@ -49,12 +49,6 @@
   # Kernel version
   boot.kernelPackages = pkgs.linuxPackages;
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-    writebackDevice = "/dev/disk/by-partlabel/disk-nixos-swap";
-  };
-
   services.smartd.enable = true;
   services.fwupd.enable = true;
 
