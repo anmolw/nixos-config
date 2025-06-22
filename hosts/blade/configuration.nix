@@ -158,6 +158,7 @@
     micro
     nvme-cli
     pciutils
+    smartmontools
     usbutils
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wireguard-tools
@@ -191,7 +192,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
+  services.smartd.enable = true;
   services.fwupd.enable = true;
 
   # Enable the OpenSSH daemon.

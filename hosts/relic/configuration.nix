@@ -55,6 +55,9 @@
     writebackDevice = "/dev/disk/by-partlabel/disk-nixos-swap";
   };
 
+  services.smartd.enable = true;
+  services.fwupd.enable = true;
+
   services.tailscale.enable = true;
   services.tailscale.extraUpFlags = [ "--stateful-filtering=false" ];
 
@@ -110,6 +113,7 @@
     nfs-utils
     pciutils
     pyenv
+    smartmontools
     usbutils
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
