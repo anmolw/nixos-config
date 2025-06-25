@@ -6,6 +6,8 @@
     group = "jellyfin";
     openFirewall = true;
   };
+  systemd.services.jellyfin.serviceConfig.SupplementaryGroups = [ "media" ];
+
   environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-web
