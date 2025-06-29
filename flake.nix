@@ -111,6 +111,18 @@
             ];
           };
 
+          desktop = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs stablePkgs; };
+            modules = [
+              home-manager.nixosModules.default
+              inputs.catppuccin.nixosModules.catppuccin
+              inputs.disko.nixosModules.disko
+              inputs.sops-nix.nixosModules.default
+              ./hosts/desktop/configuration.nix
+            ];
+          };
+
           relic = nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = { inherit inputs stablePkgs; };
