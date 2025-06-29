@@ -1,0 +1,129 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ../../modules/nixos/nixsettings.nix
+    ../../modules/nixos/podman.nix
+    ../../modules/nixos/ssh.nix
+    ./hardware-configuration.nix
+    ./gfx.nix
+    ./networking.nix
+    ./services
+    ./users.nix
+  ];
+
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
+  };
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  boot.extraModulePackages = [ config.boot.kernelPackages.xone ];
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    jack.enable = true;
+    pulse.enable = true;
+    extraConfig.pipewire = { };
+  };
+
+  programs.fish.enable = true;
+  programs.nh = {
+    enable = true;
+    flake = "/home/anmol/code/github/nixos-config";
+  };
+
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    aria2
+    asciinema
+    bat
+    btop
+    cider-2
+    compsize
+    croc
+    curl
+    delta
+    dfrs
+    direnv
+    distrobox
+    dua
+    eza
+    fastfetch
+    fd
+    file
+    fzf
+    ghostty
+    git
+    go
+    gpu-screen-recorder
+    gpu-screen-recorder-gtk
+    helix
+    heroic
+    jellyfin-media-player
+    jq
+    jujutsu
+    kdePackages.partitionmanager
+    lazygit
+    (llama-cpp.override { rocmSupport = true; })
+    micro
+    mpv
+    nix-output-monitor
+    nix-search-cli
+    nvme-cli
+    nvtopPackages.amd
+    obsidian
+    ollama-rocm
+    pciutils
+    ripgrep
+    smartmontools
+    tlrc
+    usbutils
+    uv
+    vim
+    vlc
+    wget
+    wireguard-tools
+    zoxide
+  ];
+
+  programs.virt-manager.enable = true;
+  programs.firefox.enable = true;
+
+  programs.steam = {
+    enable = true;
+    protontricks.enable = true;
+    remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
+
+  services.fwupd.enable = true;
+  services.smartd.enable = true;
+  services.flatpak.enable = true;
+
+  virtualisation.vmVariant = { };
+
+  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "Asia/Kolkata";
+
+  system.stateVersion = "25.11";
+}
