@@ -28,7 +28,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@root"
-      "compress=zstd"
+      "compress=zstd:1"
     ];
   };
 
@@ -37,7 +37,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@home"
-      "compress=zstd"
+      "compress=zstd:1"
     ];
   };
 
@@ -46,7 +46,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@var"
-      "compress=zstd"
+      "compress=zstd:1"
       "noatime"
     ];
   };
@@ -56,7 +56,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@srv"
-      "compress=zstd"
+      "compress=zstd:1"
     ];
   };
 
@@ -65,7 +65,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@tmp"
-      "compress=zstd"
+      "compress=zstd:1"
       "noatime"
     ];
   };
@@ -75,7 +75,7 @@
     fsType = "btrfs";
     options = [
       "subvol=@nix"
-      "compress=zstd"
+      "compress=zstd:1"
       "noatime"
     ];
   };
