@@ -4,5 +4,6 @@
     ./nfs.nix
     ./nix-serve.nix
     ./samba.nix
+    ./ssh.nix
   ];
 }
