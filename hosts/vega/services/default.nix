@@ -5,6 +5,7 @@
     ./minecraft.nix
     ./miniflux.nix
     ./ssh.nix
+    ./syncthing.nix
     ./tailscale.nix
   ];
 
