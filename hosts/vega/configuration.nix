@@ -9,6 +9,7 @@
     ./disko-configuration.nix
     ./hardware-configuration.nix
     ./networking.nix
+    ../../modules/nixos/common.nix
     ../../modules/nixos/nixsettings.nix
     ./services
   ];
