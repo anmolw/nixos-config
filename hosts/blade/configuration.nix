@@ -29,16 +29,16 @@
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   # Nix settings
-  nix.settings.trusted-users = [ "anmol" ];
-  nix.settings.extra-substituters = [
-    "http://relic:5000"
-  ];
-  nix.settings.extra-trusted-public-keys = [
-    "relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ="
-  ];
-  nix.extraOptions = ''
-    builders-use-substitutes = true
-  '';
+  nix.settings = {
+    builders-use-substitutes = true;
+    extra-substituters = [
+      "http://relic:5000"
+    ];
+    extra-trusted-public-keys = [
+      "relic:m82+/J4P+QTmMdBHd7UGeuuYIqsxA+TKOQ9+HOFP8lQ="
+    ];
+    trusted-users = [ "@wheel" ];
+  };
 
   # Home-manager
   home-manager = {
