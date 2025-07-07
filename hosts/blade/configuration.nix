@@ -19,6 +19,7 @@
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nixsettings.nix
+    ../../modules/nixos/podman.nix
     ../../modules/nixos/steam.nix
     ../../modules/nixos/ssh.nix
   ];
@@ -152,6 +153,7 @@
     compsize
     croc
     curl
+    distrobox
     eza
     file
     fzf
