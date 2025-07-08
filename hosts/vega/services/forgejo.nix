@@ -31,4 +31,12 @@ in
     home = cfg.stateDir;
   };
   users.groups.git = { };
+
+  services.caddy.virtualHosts = {
+    "git.anmolw.com" = {
+      extraConfig = ''
+        reverse_proxy :${toString srv.HTTP_PORT}
+      '';
+    };
+  };
 }

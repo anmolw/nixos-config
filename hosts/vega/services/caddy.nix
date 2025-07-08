@@ -16,11 +16,6 @@
           reverse_proxy pi4:8123
         '';
       };
-      "git.anmolw.com" = {
-        extraConfig = ''
-          reverse_proxy :3000
-        '';
-      };
     };
   };
 }
