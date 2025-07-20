@@ -63,6 +63,21 @@
         }
       );
 
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              treefmt
+              nixfmt-rfc-style
+            ];
+          };
+        }
+      );
+
       homeConfigurations =
         let
           system = "x86_64-linux";
