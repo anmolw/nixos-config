@@ -117,6 +117,11 @@
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
 
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   programs.discord.enable = true;
   programs.discord.wrapDiscord = true;
 
