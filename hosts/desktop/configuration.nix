@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ./gfx.nix
     ./networking.nix
+    ./programs
     ./services
     ./users.nix
   ];
@@ -126,6 +127,9 @@
     localNetworkGameTransfers.openFirewall = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
+
+  programs.discord.enable = true;
+  programs.discord.wrapDiscord = true;
 
   services.fwupd.enable = true;
   services.smartd.enable = true;
