@@ -6,9 +6,9 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    sersorrel-sys = {
+    keysmashes-sys = {
       type = "github";
-      owner = "sersorrel";
+      owner = "keysmashes";
       repo = "sys";
       rev = "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc";
     };

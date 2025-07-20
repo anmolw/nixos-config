@@ -172,6 +172,22 @@
         "type": "github"
       }
     },
+    "keysmashes-sys": {
+      "locked": {
+        "lastModified": 1731168894,
+        "narHash": "sha256-uVF3T3e5QYKB5gAeVahagACx8Ls/0mwfR9e02mM9nT8=",
+        "owner": "keysmashes",
+        "repo": "sys",
+        "rev": "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "keysmashes",
+        "repo": "sys",
+        "rev": "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc",
+        "type": "github"
+      }
+    },
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
@@ -337,12 +353,12 @@
         "chaotic": "chaotic",
         "disko": "disko",
         "home-manager": "home-manager_2",
+        "keysmashes-sys": "keysmashes-sys",
         "nix-index-database": "nix-index-database",
         "nix-minecraft": "nix-minecraft",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable",
-        "sersorrel-sys": "sersorrel-sys",
         "sops-nix": "sops-nix"
       }
     },
@@ -364,22 +380,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "sersorrel-sys": {
-      "locked": {
-        "lastModified": 1731168894,
-        "narHash": "sha256-uVF3T3e5QYKB5gAeVahagACx8Ls/0mwfR9e02mM9nT8=",
-        "owner": "sersorrel",
-        "repo": "sys",
-        "rev": "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sersorrel",
-        "repo": "sys",
-        "rev": "a88ae627fcbd38c0229364d4ba90e2b0a3cbc2bc",
         "type": "github"
       }
     },

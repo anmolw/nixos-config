@@ -15,7 +15,7 @@
 let
   cfg = config.programs.discord;
 
-  patcher = "${inputs.sersorrel-sys}/hm/discord/krisp-patcher.py";
+  patcher = "${inputs.keysmashes-sys}/hm/discord/krisp-patcher.py";
 
   python = pkgs.python3.withPackages (ps: [
     ps.pyelftools
