@@ -150,6 +150,14 @@
 
   virtualisation.vmVariant = { };
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      swtpm.enable = true;
+      ovmf.packages = [ pkgs.OVMFFull.fd ];
+    };
+  };
+
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Asia/Kolkata";
 
