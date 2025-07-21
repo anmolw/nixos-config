@@ -9,6 +9,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "libvirtd"
     ];
     packages = [ ];
   };
