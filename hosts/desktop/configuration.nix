@@ -113,6 +113,9 @@
 
   programs.steam = {
     enable = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [ kdePackages.breeze ];
+    };
     protontricks.enable = true;
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
