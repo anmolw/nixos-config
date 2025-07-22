@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ./gfx.nix
     ./networking.nix
+    ./pipewire.nix
     ./programs
     ./services
     ./users.nix
@@ -37,7 +38,6 @@
     alsa.support32Bit = true;
     jack.enable = true;
     pulse.enable = true;
-    extraConfig.pipewire = { };
   };
 
   programs.fish.enable = true;
@@ -99,6 +99,7 @@
     nfs-utils
     nix-output-monitor
     nix-search-cli
+    nixos-rebuild-ng
     nvme-cli
     nvtopPackages.amd
     mangohud
