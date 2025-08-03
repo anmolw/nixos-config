@@ -109,6 +109,7 @@
     podlet
     prismlauncher
     ripgrep
+    rocmPackages.rocm-smi
     signal-desktop
     smartmontools
     television
