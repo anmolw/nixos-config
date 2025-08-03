@@ -105,6 +105,7 @@
     podlet
     prismlauncher
     ripgrep
+    rocmPackages.rocm-smi
     smartmontools
     tlrc
     usbutils
