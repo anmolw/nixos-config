@@ -99,6 +99,7 @@
     nfs-utils
     nix-output-monitor
     nix-search-cli
+    nix-your-shell
     nixos-rebuild-ng
     nvme-cli
     nvtopPackages.amd
