@@ -102,6 +102,7 @@
     ollama-rocm
     pciutils
     ripgrep
+    rocmPackages.rocm-smi
     smartmontools
     tlrc
     usbutils
