@@ -13,7 +13,7 @@ in
   config.programs.zsh = lib.mkMerge [
     {
       enable = true;
-      dotDir = ".config/zsh";
+      dotDir = "${config.xdg.configHome}/zsh";
       enableCompletion = true;
       autosuggestion.enable = true;
       plugins = [
