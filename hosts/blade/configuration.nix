@@ -49,7 +49,6 @@
     sharedModules = [
       inputs.catppuccin.homeModules.catppuccin
       inputs.sops-nix.homeManagerModules.sops
-      inputs.nix-index-database.hmModules.nix-index
     ];
     users.anmol = {
       imports = [
