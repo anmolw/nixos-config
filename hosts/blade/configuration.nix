@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ./gfx.nix
     ./networking.nix
+    ./services
     ../../modules/nixos/common.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/fonts.nix
@@ -144,8 +145,6 @@
 
   # Enable flatpak
   services.flatpak.enable = true;
-
-  services.tailscale.enable = true;
 
   environment.systemPackages = with pkgs; [
     aria2

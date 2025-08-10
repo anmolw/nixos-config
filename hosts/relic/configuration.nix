@@ -51,9 +51,6 @@
   services.smartd.enable = true;
   services.fwupd.enable = true;
 
-  services.tailscale.enable = true;
-  services.tailscale.extraUpFlags = [ "--stateful-filtering=false" ];
-
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
