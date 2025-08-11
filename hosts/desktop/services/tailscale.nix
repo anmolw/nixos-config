@@ -4,5 +4,8 @@
     extraSetFlags = [
       "--operator=anmol"
     ];
+    extraDaemonFlags = [
+      "--no-logs-no-support"
+    ];
   };
 }
