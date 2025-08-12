@@ -18,18 +18,20 @@
     ./users.nix
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      useOSProber = true;
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+      };
     };
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelParams = [ "systemd.swap=false" ];
+    extraModulePackages = [ config.boot.kernelPackages.xone ];
   };
-
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  boot.extraModulePackages = [ config.boot.kernelPackages.xone ];
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -162,6 +164,12 @@
       swtpm.enable = true;
       ovmf.packages = [ pkgs.OVMFFull.fd ];
     };
+  };
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+    writebackDevice = "/dev/disk/by-uuid/3e12d1bb-24df-460b-a943-1c23feeff0cf";
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
