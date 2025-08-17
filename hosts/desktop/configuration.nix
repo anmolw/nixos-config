@@ -152,6 +152,8 @@
   programs.discord.enable = true;
   programs.discord.wrapDiscord = true;
 
+  programs.kdeconnect.enable = true;
+
   services.fwupd.enable = true;
   services.smartd.enable = true;
   services.flatpak.enable = true;
