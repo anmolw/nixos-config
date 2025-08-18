@@ -130,6 +130,9 @@
 
   programs.virt-manager.enable = true;
   programs.firefox.enable = true;
+  programs.firefox.preferences = {
+    "widget.use-xdg-desktop-portal.file-picker" = 1;
+  };
 
   programs.direnv.enable = true;
 
