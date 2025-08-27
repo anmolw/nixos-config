@@ -86,7 +86,8 @@
     gpu-screen-recorder-gtk
     helix
     heroic
-    jellyfin-media-player
+    # Disabled due to vulnerabilities in qt5 qtwebengine
+    # jellyfin-media-player
     jq
     jujutsu
     just
