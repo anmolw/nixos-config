@@ -134,7 +134,14 @@
     "widget.use-xdg-desktop-portal.file-picker" = 1;
   };
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    settings = {
+      global = {
+        hide_env_diff = true;
+      };
+    };
+  };
 
   programs.steam = {
     enable = true;
