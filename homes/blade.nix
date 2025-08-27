@@ -41,7 +41,8 @@
   home.packages = with pkgs; [
     btdu
     fastfetch
-    jellyfin-media-player
+    # Disabled due to vulnerabilities in qt5 qtwebengine
+    # jellyfin-media-player
     ktailctl
     moonlight-qt
     obsidian
