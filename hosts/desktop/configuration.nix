@@ -58,6 +58,18 @@
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  fonts.packages = with pkgs; [
+    annotation-mono
+    fira-mono
+    jetbrains-mono
+    monaspace
+    nerd-fonts.fira-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.monaspace
+  ];
+
+  fonts.fontconfig.useEmbeddedBitmaps = true;
+
   environment.systemPackages = with pkgs; [
     aria2
     asciinema
