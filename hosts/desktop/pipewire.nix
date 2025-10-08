@@ -78,5 +78,24 @@ let
   };
 in
 {
-  services.pipewire.extraConfig.pipewire."90-mic-gain" = pw_sourceamp_config;
+  services.pipewire.extraConfig.pipewire = {
+    "90-mic-gain" = pw_sourceamp_config;
+    "10-allowed-rates" = {
+      "context.properties" = {
+        "default.clock.allowed-rates" = [
+          44100
+          48000
+          88200
+          96000
+        ];
+      };
+    };
+  };
+  services.pipewire.extraConfig.client = {
+    "10-resample-quality" = {
+      "stream.properties" = {
+        "resample.quality" = 10;
+      };
+    };
+  };
 }
