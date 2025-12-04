@@ -6,7 +6,7 @@
     eula = true;
     servers.vanilla = {
       enable = true;
-      package = pkgs.paperServers.paper-1_21_5;
+      package = pkgs.paperServers.paper-1_21_10;
       openFirewall = true;
       autoStart = false;
       serverProperties = {
