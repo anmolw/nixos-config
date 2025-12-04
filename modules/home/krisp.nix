@@ -13,7 +13,7 @@
   ...
 }:
 let
-  cfg = config.programs.discord;
+  cfg = config.programs.discord-krisp;
 
   patcher = "${inputs.keysmashes-sys}/hm/discord/krisp-patcher.py";
 
@@ -37,7 +37,7 @@ let
   '';
 in
 {
-  options.programs.discord = {
+  options.programs.discord-krisp = {
     enable = lib.mkEnableOption "Discord";
     wrapDiscord = lib.mkEnableOption "wrap Discord to patch and enable Krisp audio support";
   };

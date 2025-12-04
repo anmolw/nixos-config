@@ -120,6 +120,6 @@
     set -g default-shell ${pkgs.fish}/bin/fish
   '';
 
-  programs.discord.enable = true;
-  programs.discord.wrapDiscord = true;
+  # programs.discord.enable = true;
+  # programs.discord.wrapDiscord = true;
 }
