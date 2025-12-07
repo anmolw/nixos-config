@@ -16,6 +16,7 @@
         max-players = 10;
         motd = "Minecraft server";
         white-list = true;
+        spawn-protection = 0;
       };
     };
   };
