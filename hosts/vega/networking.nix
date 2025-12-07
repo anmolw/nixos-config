@@ -7,6 +7,7 @@
         80
         443
       ];
+      allowedUDPPorts = [ 443 ];
     };
     usePredictableInterfaceNames = false;
   };
@@ -38,7 +39,7 @@
   services.resolved = {
     enable = true;
     dnsovertls = "opportunistic";
-    dnssec = "true";
+    dnssec = "false";
     domains = [ "~." ];
     fallbackDns = [ "9.9.9.9#dns.quad9.net" ];
   };
