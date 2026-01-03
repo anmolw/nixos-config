@@ -7,8 +7,14 @@
         serverAliases = [ "www.anmolw.com" ];
         extraConfig = ''
           encode gzip
-          root * /srv/www/anmolw.com
-          file_server
+          handle_path /minecraft* {
+            root /srv/www/anmolw.com/minecraft
+            file_server browse
+          }
+          handle {
+            root * /srv/www/anmolw.com
+            file_server
+          }
         '';
       };
       "hass.anmolw.com" = {
