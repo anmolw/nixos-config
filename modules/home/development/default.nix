@@ -19,7 +19,7 @@
     nil
     nix-melt
     nixd
-    nixfmt-rfc-style
+    nixfmt
     poop
     tea
     treefmt

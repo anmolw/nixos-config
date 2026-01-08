@@ -55,7 +55,7 @@
               nix-output-monitor
               nix-search-cli
               nixd
-              nixfmt-rfc-style
+              nixfmt
               nixos-rebuild
               nixos-rebuild-ng
               treefmt
