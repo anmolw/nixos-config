@@ -56,7 +56,6 @@
               nix-search-cli
               nixd
               nixfmt
-              nixos-rebuild
               nixos-rebuild-ng
               treefmt
             ];
