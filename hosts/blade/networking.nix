@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   networking = {
     hostName = "blade"; # Define your hostname.
@@ -13,16 +14,16 @@
 
   services.resolved = {
     enable = true;
-    dnsovertls = "opportunistic";
-    dnssec = "true";
-    domains = [ "~." ];
-    extraConfig = ''
-      MulticastDNS = "true"
-    '';
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-      "9.9.9.9#dns.quad9.net"
-    ];
+    settings.Resolve = {
+      Domains = [ "~." ];
+      DNSSEC = true;
+      DNSOverTLS = "opportunistic";
+      MulticastDNS = true;
+      FallbackDNS = lib.concatStringsSep " " [
+        "1.1.1.1#one.one.one.one"
+        "1.0.0.1#one.one.one.one"
+        "9.9.9.9#dns.quad9.net"
+      ];
+    };
   };
 }

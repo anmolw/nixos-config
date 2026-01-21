@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   networking = {
     hostName = "relic";
@@ -39,16 +40,16 @@
 
   services.resolved = {
     enable = true;
-    dnsovertls = "opportunistic";
-    dnssec = "true";
-    domains = [ "~." ];
-    extraConfig = ''
-      MulticastDNS = "true"
-    '';
-    fallbackDns = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-      "9.9.9.9#dns.quad9.net"
-    ];
+    settings.Resolve = {
+      DNSOverTLS = "opportunistic";
+      DNSSEC = "true";
+      Domains = [ "~." ];
+      MulticastDNS = true;
+      FallbackDNS = lib.concatStringsSep " " [
+        "1.1.1.1#one.one.one.one"
+        "1.0.0.1#one.one.one.one"
+        "9.9.9.9#dns.quad9.net"
+      ];
+    };
   };
 }

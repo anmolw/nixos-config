@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   networking = {
     hostName = "vega";
@@ -38,9 +39,11 @@
 
   services.resolved = {
     enable = true;
-    dnsovertls = "opportunistic";
-    dnssec = "false";
-    domains = [ "~." ];
-    fallbackDns = [ "9.9.9.9#dns.quad9.net" ];
+    settings.Resolve = {
+      DNSOverTLS = "opportunistic";
+      DNSSEC = "false";
+      Domains = [ "~." ];
+      FallbackDNS = [ "9.9.9.9#dns.quad9.net" ];
+    };
   };
 }
