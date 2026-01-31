@@ -57,10 +57,13 @@
   environment.systemPackages = with pkgs; [
     bat
     btop
+    dix
     dua
+    eza
     fd
     nix-search-cli
     ripgrep
+    tmux
     vim
   ];
 
