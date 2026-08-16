@@ -17,6 +17,7 @@
     ./networking.nix
     ./services
     ../../modules/nixos/common.nix
+    ../../modules/nixos/catppuccin.nix
     ../../modules/nixos/desktop/kde.nix
     ../../modules/nixos/fonts.nix
     ../../modules/nixos/nixsettings.nix

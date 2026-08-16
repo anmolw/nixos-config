@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+
   imports = [
     ./fish.nix
     ./tmux.nix
@@ -23,6 +24,12 @@
 
   home.shellAliases = {
     man = "batman";
+  };
+
+  # TODO: split this out into its own module?
+  catppuccin = {
+    autoEnable = false;
+    enable = true;
   };
 
   programs.btop = {
@@ -60,6 +67,8 @@
   };
 
   programs.fzf.enable = true;
+  # Disable fzf's ctrl+R binding since it conflicts with atuin
+  programs.fzf.historyWidget.command = "";
 
   catppuccin.fzf = {
     enable = true;
@@ -99,7 +108,11 @@
     };
   };
 
-  programs.yazi.enable = true;
+  programs.yazi = {
+    enable = true;
+    # Fix evaluation warning
+    shellWrapperName = "y";
+  };
 
   catppuccin.yazi = {
     enable = true;
