@@ -36,14 +36,14 @@
         "format_short_signature(signature)" = "    coalesce(signature.name(), name_placeholder)";
         "format_short_commit_header(commit)" = ''
           separate(" ",
-              format_short_change_id_with_hidden_and_divergent_info(commit),
+              format_short_change_id_with_change_offset(commit),
               if(commit.signature(), "", ""),
               format_short_signature(commit.author()),
               format_timestamp(commit_timestamp(commit)),
               commit.bookmarks(),
               commit.tags(),
               commit.working_copies(),
-              if(commit.git_head(), label("git_head", "git_head()")),
+              if(commit.contained_in("first_parent(@)"), label("git_head", "git_head()")),
               format_short_commit_id(commit.commit_id()),
               if(commit.conflict(), label("conflict", "conflict")),
               if(config("ui.show-cryptographic-signatures").as_boolean(),
