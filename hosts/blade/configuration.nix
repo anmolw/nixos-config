@@ -43,6 +43,9 @@
     trusted-users = [ "@wheel" ];
   };
 
+  # Enable catppuccin's binary cache
+  catppuccin.cache.enable = true;
+
   # Home-manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
