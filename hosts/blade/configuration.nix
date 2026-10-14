@@ -144,8 +144,14 @@
     ];
   };
 
-  # Enable flatpak
-  services.flatpak.enable = true;
+  # Flatpak is disabled because its NixOS module sets fonts.fontDir.enable,
+  # which makes programs.xwayland.defaultFontPath non-empty and so overrides
+  # pkgs.xwayland. Hydra only builds the empty-font-path variant, so that
+  # override is a guaranteed cache miss and Xwayland gets compiled locally on
+  # every version bump. Re-enabling this is fine, but either accept the build
+  # or pair it with programs.xwayland.defaultFontPath = "" (which costs core
+  # X11 font lookups for legacy Xwayland clients).
+  services.flatpak.enable = false;
 
   environment.systemPackages = with pkgs; [
     aria2
